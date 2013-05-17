@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
 <dozenten xmlns="http://www.example.org/dozent">
-	<dozent id="1" uri="/dozenten/dozent/1">
+	<dozent id="1">
 		<titel>Prof. Dr. Kristian Fischer</titel>
 		<adresse titel="Adresse">
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
@@ -31,7 +31,7 @@
 		</abonnenten>
 	</dozent>
 	
-	<dozent id="2" uri="/dozenten/dozent/2">
+	<dozent id="2">
 		<titel>Prof. Dr. rer. nat. Wolfgang Konen</titel>
 		<adresse titel="Adresse">
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
@@ -61,7 +61,7 @@
 		</abonnenten>
 	</dozent>
 	
-	<dozent id="3" uri="/dozenten/dozent/3">
+	<dozent id="3">
 		<titel>Prof. Dr. Horst Stenzel</titel>
 		<adresse titel="Adresse">
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>

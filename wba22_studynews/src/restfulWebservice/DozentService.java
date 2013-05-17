@@ -1,57 +1,69 @@
 package restfulWebservice;
 
-
 import java.io.File;
 import java.io.FileNotFoundException;
 
 import javax.ws.rs.*;
-import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
 import javax.xml.bind.Marshaller;
 import javax.xml.bind.Unmarshaller;
 
-import dozenten.Dozenten;
-import dozenten.Dozenten.Dozent;
-import dozentenliste.Dozentenliste;
-import dozenten.ObjectFactory;
+import com.sun.research.ws.wadl.Response;
 
+	import dozenten.Dozenten;
+	import dozenten.Dozenten.Dozent;
+	import dozentenliste.Dozentenliste;
+	import dozenten.ObjectFactory;
 
-@Path ("/dozenten")
-public class DozentService {
-	
-	/*
-	 * Alle Dozenten laden
-	 */
+	@Path ("/dozenten")
+	public class DozentService {
+
 	@GET
-	@Path("/dozent")
 	@Produces("application/xml")
 	public Dozentenliste getAll() throws JAXBException, FileNotFoundException
 	{
-		JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
+		Dozentenliste dozentliste = new Dozentenliste();
+		JAXBContext context = JAXBContext.newInstance(Dozentenliste.class);
 		Unmarshaller um = context.createUnmarshaller();
-		Dozentenliste dozentenliste = (Dozentenliste) um.unmarshal(new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/dozentenliste/dozentenliste.xml"));
-		
-		return dozentenliste;
-	}
+		dozentliste = (Dozentenliste) um.unmarshal(new File("/Users/Butterfly/git/wba2_phase2/wba2-2/src/dozentenliste.xml"));
 	
-	/**Einen Dozent laden
-	 * 
-	 * @param id Eine ID des Dozenten der zurückgegeben werden soll
-	 * @return Ein Dozent
-	 */
+		return dozentliste;
+	}
+
 	@GET
 	@Path("/dozent/{id}")
 	@Produces("application/xml")
 	public Dozenten getOne(@PathParam("id") int id) throws JAXBException, FileNotFoundException
 	{
-		JAXBContext context = JAXBContext.newInstance(ObjectFactory.class);
+		ObjectFactory of = new ObjectFactory();
+		Dozenten dozent = of.createDozenten();
+		
+		JAXBContext context = JAXBContext.newInstance(Dozenten.class);
 		Unmarshaller um = context.createUnmarshaller();
-		Dozenten dozenten = (Dozenten) um.unmarshal(new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/dozenten/dozenten.xml"));
-		
-		Dozenten d = new Dozenten();
-		d.getDozent().add(dozenten.getDozent().get(id-1));
-		
-		return d;
+		dozent = (Dozenten) um.unmarshal(new File("/Users/Butterfly/git/wba2_phase2/wba2-2/src/dozent1.xml"));
+		Dozenten doz = of.createDozenten();
+		doz.getDozent().add(dozent.getDozent().get(id-1));
+	
+		return doz;
+	
+	  }
+	
+	
+	@POST
+	@Path("/dozent/add")
+	@Consumes("application/xml")
+	public Response addDozent(Dozenten newDozent) throws JAXBException, FileNotFoundException
+	{
+		Dozentenliste dozenten = getAll();
+		JAXBContext context = JAXBContext.newInstance(Dozentenliste.class);
+		Marshaller m = context.createMarshaller();
+		m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+		m.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
+		m.setProperty("jaxb.schemaLocation", "http://www.example.org/dozentliste dozentenliste.xsd");
+		m.marshal(dozenten, new File("/src/dozentenliste.xml"));
+		return null;
 	}
+	
+	
 }
