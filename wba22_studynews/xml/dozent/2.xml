@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dozent id="2" xmlns="http://www.example.org/dozent" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:schemaLocation="http://example.org/dozent ../../xsd/dozent.xsd ">
+		<titel>Prof. Dr. rer. nat. Wolfgang Konen</titel>
+		<adresse titel="Adresse">
+			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
+			<raum titel="Raum" nummer="3230" />
+			<tel>
+				<nummer art="Telefon" nr="+49 2261 8196 6275" />
+				<nummer art="Fax" nr="+49 2261 8196 6666" />
+			</tel>
+			<email adresse="konen at gm.fh-koeln.de" />
+		</adresse>
+		<lehre>
+			<lehrgebiet>Mathematik, Angewandte Informatik</lehrgebiet>
+			<url>http://www.gm.fh-koeln.de/~konen/</url>
+			<sprechzeit>mittwochs 13:15 - 14:00 Uhr</sprechzeit>
+			<veranstaltungen>
+				<list kuerzel="MA2">Mathematik 2</list>
+			</veranstaltungen>
+		</lehre>
+		<newsticker titel="Newsticker">
+			<eintrag datum="2013-04-0" verfasser="Prof. Dr. rer. nat. Wolfgang Konen" modul="MA2" text="Klausurergebnisse sind da!"/>
+			<eintrag datum="2013-03-14" verfasser="Prof. Dr. rer. nat. Wolfgang Konen" modul="MA2" text="Diese Woche Beginn meiner Lehrveranstaltung!" />
+			<eintrag datum="2013-03-10" verfasser="Prof. Dr. rer. nat. Wolfgang Konen" modul="MA2" text="Mi, 20.03.2013, 11 Uhr, ist pflichttermin Einführung MA2-Praktikum!" />
+			<eintrag datum="2013-02-28" verfasser="Prof. Dr. rer. nat. Wolfgang Konen" modul="MA2" text="Klausurabgrenzung zur Klausur am 12.03.2013. Viel Erfolg!" />
+		</newsticker>
+		<abonnenten>
+			<abonnent name="Daniela Kucharczyk" />
+		</abonnenten>
+</dozent>

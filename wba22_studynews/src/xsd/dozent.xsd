@@ -1,9 +1,30 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/dozent" elementFormDefault="qualified">
-	<xs:element name="dozenten">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/dozent" elementFormDefault="qualified" xmlns:tn="http://example.org/dozent">
+				
+	<xs:element name="dozent">
 		<xs:complexType>
-			<xs:sequence>
-				<xs:element name="dozent" minOccurs="1" maxOccurs="unbounded">
+			<xs:complexContent>
+				<xs:extension base="tn:ct_dozent">
+					<xs:attribute name="id" type="xs:nonNegativeInteger" use="required"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="ct_dozent">
+		<xs:sequence>
+			<xs:element name="titel" type="xs:string" />
+			<xs:element name="Antworten">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="Antwort" type="tn:ct_antwort" minOccurs="0" maxOccurs="unbounded"/>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+				
+				<xs:element name="dozent">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="titel" type="xs:string" />	
@@ -91,10 +112,7 @@
 								</xs:complexType>
 							</xs:element>
 						</xs:sequence>
-						<xs:attribute name="id" type="xs:integer" />
+						<xs:attribute name="id" type="xs:nonNegativeInteger" use="required" />
 					</xs:complexType>
 				</xs:element>
-			</xs:sequence>
-		</xs:complexType>
-	</xs:element>
 </xs:schema>
