@@ -1,6 +1,0 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dozentenliste xmlns="http://www.example.org/dozentenliste">
-	<dozent id="1">Prof. Dr. Kristian Fischer</dozent>
-	<dozent id="2">Prof. Dr. rer. nat. Wolfgang Konen</dozent>
-	<dozent id="3">Prof. Dr. Horst Stenzel</dozent>
-</dozentenliste>

@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns="http://www.w3.org/2001/XMLSchema" 
+	targetNamespace="http://www.example.org/dozent" 
+	xmlns:tns="http://www.example.org/dozent" 
+	elementFormDefault="qualified">
+				
+	<xs:element name="dozent">
+		<xs:complexType>
+			<xs:complexContent>
+				<xs:extension base="tn:ct_dozent">
+					<xs:attribute name="id" type="xs:nonNegativeInteger"/>
+				</xs:extension>
+			</xs:complexContent>
+		</xs:complexType>
+	</xs:element>
+	
+	<xs:complexType name="ct_dozent">
+		<xs:sequence>
+			<xs:element name="titel" type="xs:string" />
+			<xs:element name="adresse" type="tn:ct_adresse"/>
+			<xs:element name="lehre" type="tn:ct_lehre"/>
+			<xs:element name="newsticker" type="tn:ct_newsticker"/>
+			<xs:element name="abonnenten" type="tn:ct_abonnenten"/>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ct_adresse">
+		<xs:sequence>
+		<xs:element name="anschrift" type="xs:string" />
+			<xs:element name="raumnr">
+				<xs:complexType>
+					<xs:attribute name="nummer" type="xs:nonNegativeInteger" />
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="tel">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="nummer" minOccurs="0" maxOccurs="unbounded">
+							<xs:complexType>
+								<xs:attribute name="art" type="xs:string" />
+								<xs:attribute name="nr" type="xs:string" />
+							</xs:complexType>
+						</xs:element>
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="email">
+				<xs:complexType>
+					<xs:attribute name="adresse" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>	
+	
+	<xs:complexType name="ct_lehre">
+		<xs:sequence>
+			<xs:element name="lehrgebiet" type="xs:string" />
+			<xs:element name="schwerpunkte" type="xs:string" minOccurs="0" />
+			<xs:element name="url" type="xs:string" />
+			<xs:element name="sprechzeit" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+			<xs:element name="veranstaltungen">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="bezeichnung" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ct_newsticker">
+		<xs:sequence>
+			<xs:element name="eintrag" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="datum" type="xs:date" />
+					<xs:attribute name="verfasser" type="xs:string" />
+					<xs:attribute name="modul" type="xs:string" />
+					<xs:attribute name="text" type="xs:string" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ct_abonnenten">
+		<xs:sequence>
+			<xs:element name="abonnent" minOccurs="0" maxOccurs="unbounded">
+				<xs:complexType>
+					<xs:attribute name="name" />
+				</xs:complexType>
+			</xs:element>
+		</xs:sequence>
+	</xs:complexType>
+</xs:schema>

@@ -19,21 +19,30 @@ import javax.xml.bind.Unmarshaller;
 
 public abstract class Ressource {
 
-final static String xmlDir = "src/de/steinleostolski/xml/";
 
 @SuppressWarnings("rawtypes")
 public Object unmarshal(Class clazz, String xml) throws JAXBException, IOException {
-Object object = new Object();
-JAXBContext jc = JAXBContext.newInstance(clazz);
-Unmarshaller unmarshaller = jc.createUnmarshaller();
-InputStream inputStream = new FileInputStream(xmlDir+xml);
-Reader reader = new InputStreamReader(inputStream,"UTF-8");
-try {
-object = (Object) unmarshaller.unmarshal(reader);
-} finally {
-reader.close();
-}
-return object;
+
+	Object object = new Object();
+	
+	JAXBContext context = JAXBContext.newInstance(clazz);
+	Unmarshaller unmarshaller = context.createUnmarshaller();
+	object = (Object) unmarshaller.unmarshal(new File(xml));
+	
+	return object;
+	/*
+	Object object = new Object();
+	JAXBContext jc = JAXBContext.newInstance(clazz);
+	Unmarshaller unmarshaller = jc.createUnmarshaller();
+	InputStream inputStream = new FileInputStream(xml);
+	Reader reader = new InputStreamReader(inputStream,"UTF-8");
+	try {
+	object = (Object) unmarshaller.unmarshal(reader);
+	} finally {
+	reader.close();
+	}
+	return object;
+	*/
 }
 
 @SuppressWarnings("rawtypes")
@@ -43,7 +52,7 @@ Marshaller marshaller = jc.createMarshaller();
 marshaller.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
 marshaller.setProperty(Marshaller.JAXB_ENCODING, "UTF-8");
 marshaller.setProperty("jaxb.schemaLocation", schemaLoc);
-marshaller.marshal(object, new File(xmlDir+xml));
+marshaller.marshal(object, new File(xml));
 }
 
 @GET
