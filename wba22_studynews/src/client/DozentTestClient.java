@@ -41,7 +41,7 @@ public class DozentTestClient {
 				dozent.getLehre().setLehrgebiet("Muster");
 				dozent.getLehre().setUrl("http://www.gm.fh-koeln.de/~mustermann");
 				dozent.getLehre().setVeranstaltungen(new Veranstaltungen());
-				dozent.getLehre().getVeranstaltungen().getBezeichnung().add("Musterveranstaltung");
+				
 				
 				ClientResponse response = webResource.accept("MediaType.APPLICATION_XML").post(ClientResponse.class, dozent);
 				

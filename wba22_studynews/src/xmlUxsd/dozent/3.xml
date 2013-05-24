@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dozent id="3" xmlns="http://www.example.org/dozent">
+<dozent id="3">
 		<titel>Prof. Dr. Horst Stenzel</titel>
 		<adresse>
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>

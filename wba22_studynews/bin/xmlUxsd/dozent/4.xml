@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dozent xmlns:tn="http://example.org/dozent">
+<dozent id="4">
 	
  	<titel>Prof. Dipl. Des. Christian Noss</titel>
  	<adresse>
@@ -14,11 +14,11 @@
     <lehrgebiet>Kommunikationsdesign</lehrgebiet>
     <url>http://www.gm.fh-koeln.de/~noss</url>
     <veranstaltungen>
-    	<:bezeichnung>Grundlagen der visuellen Kommunikation</bezeichnung>
+    	<list kuerzel="GDVK">Grundlagen der visuellen Kommunikation</list>
     </veranstaltungen>
   </lehre>
   <newsticker>
-	<eintrag datum="2013-03-23" verfasser="Prof. Dipl. Des. Christian Noss" modul="GDVK" text="Endlich geht es los!"/>  
+	<eintrag datum="2013-03-23" verfasser="Prof. Dipl. Des. Christian Noss" modul="GDVK">Endlich geht es los!</eintrag>  
   </newsticker>
   <abonnenten/>
 </dozent>

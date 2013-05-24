@@ -34,11 +34,12 @@ import dozentenliste.Dozentenliste.DEintrag;
 
 		
 		@GET
-		@Produces("application/xml")
+		@Produces(MediaType.APPLICATION_XML)
 		public Dozentenliste getAll() throws JAXBException, IOException
 		{
 				Dozentenliste dozentenliste = new Dozentenliste();
 				dozentenliste = (Dozentenliste) unmarshal(Dozentenliste.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml");
+				
 				return dozentenliste;
 		}
 	
@@ -48,12 +49,8 @@ import dozentenliste.Dozentenliste.DEintrag;
 		@Produces(MediaType.APPLICATION_XML)
 		public Dozent getOne(@PathParam("id") BigInteger id) throws JAXBException, IOException
 		{
-			ObjectFactory of = new ObjectFactory();
-			Dozent dozent = of.createDozent();
-			
-			JAXBContext context = JAXBContext.newInstance(Dozent.class);
-			Unmarshaller um = context.createUnmarshaller();
-			dozent = (Dozent) um.unmarshal(new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml"));
+			Dozent dozent = new Dozent();
+			dozent = (Dozent) unmarshal(Dozent.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml");
 			
 			return dozent;		
 		}
