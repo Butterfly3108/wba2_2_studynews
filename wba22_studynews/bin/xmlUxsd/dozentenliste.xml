@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<dozentenliste xmlns="http://www.example.org/dozent">
+<dozentenliste>
 	<dEintrag>
 		<dozent_id>1</dozent_id>
 		<name>Prof. Dr. Kristian Fischer</name>

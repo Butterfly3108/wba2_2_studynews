@@ -1,5 +1,6 @@
 package restfulWebservice;
 
+import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.io.File;
@@ -12,24 +13,28 @@ import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
-import javax.ws.rs.core.Response;
-import javax.xml.bind.JAXBException;
 import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import javax.xml.bind.JAXBContext;
+import javax.xml.bind.JAXBException;
+import javax.xml.bind.Unmarshaller;
+//import javax.ws.rs.core.MediaType;
+
+
+
 
 import jaxb.Ressource;
 import dozenten.Dozent;
+import dozenten.ObjectFactory;
 import dozentenliste.Dozentenliste;
 import dozentenliste.Dozentenliste.DEintrag;
 
 	@Path ("/dozent")
 	public class DozentService extends Ressource {
 
-		/*
-		 * Alle Dozenten laden
-		 * @see jaxb.Ressource#getAll()
-		 */
+		
 		@GET
-		@Produces(MediaType.APPLICATION_XML)
+		@Produces("application/xml")
 		public Dozentenliste getAll() throws JAXBException, IOException
 		{
 				Dozentenliste dozentenliste = new Dozentenliste();
@@ -37,20 +42,22 @@ import dozentenliste.Dozentenliste.DEintrag;
 				return dozentenliste;
 		}
 	
-		/*
-		 * Einen Dozenten laden
-		 */
+		
 		@GET
 		@Path("/{id}")
 		@Produces(MediaType.APPLICATION_XML)
 		public Dozent getOne(@PathParam("id") BigInteger id) throws JAXBException, IOException
 		{
-			Dozent dozent = new Dozent();
-			dozent = (Dozent) unmarshal(Dozent.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml");
-	
-			return dozent;
-		
+			ObjectFactory of = new ObjectFactory();
+			Dozent dozent = of.createDozent();
+			
+			JAXBContext context = JAXBContext.newInstance(Dozent.class);
+			Unmarshaller um = context.createUnmarshaller();
+			dozent = (Dozent) um.unmarshal(new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml"));
+			
+			return dozent;		
 		}
+		
 		
 		@POST
 		@Consumes(MediaType.APPLICATION_XML)
@@ -61,7 +68,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 			
 			dozent.setId(BigInteger.valueOf(dozentId));
 			
-			marshal(Dozent.class, dozent, "dozent/"+dozentId+".xml", "http://example.org/dozent dozent.xsd ");
+			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", "http://example.org/dozent dozent.xsd ");
 			
 			DEintrag dEintrag = new DEintrag();
 			dEintrag.setDozentId(BigInteger.valueOf(dozentId));
@@ -70,16 +77,14 @@ import dozentenliste.Dozentenliste.DEintrag;
 			
 			dozentenliste.getDEintrag().add(dEintrag);
 			
-			marshal(Dozentenliste.class, dozentenliste, "dozentenliste.xml", "http://example.org/ticket ../xmlUxsd/dozentenliste.xsd");
+			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", "http://example.org/ticket ../xmlUxsd/dozentenliste.xsd");
 			
 			String result = "Dozent mit der id: "+dozent.getId()+" hinzugefügt";
 
 			return Response.status(201).entity(result).build();
 		}
 		
-		/*
-		 * Dozent löschen
-		 */
+		
 		@DELETE
 		@Consumes(MediaType.APPLICATION_XML)
 		@Path("/{id}/delete")
@@ -99,22 +104,22 @@ import dozentenliste.Dozentenliste.DEintrag;
 				}
 			}
 			
-			marshal(Dozentenliste.class, dozentenliste, "dozentenliste.xml", "http://example.org/ticket ../xmlUxsd/dozentenliste.xsd");
+			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", "http://example.org/ticket ../xmlUxsd/dozentenliste.xsd");
 			
-			File file = new File("src/xmlUxsd/dozent/"+id+".xml");
+			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml");
 
 			file.delete();
 			
 			return Response.noContent().entity(result).entity(result2).build();
 		}
 		
-		/*
-		 * Dozent ändern
-		 */
+		
 		@PUT
 		@Consumes(MediaType.APPLICATION_XML)
 		@Path("{id}/edit")
 		public Response setStatus(@PathParam("id") BigInteger id) {
 			return Response.status(201).build();
 		}
+		
+		
 }

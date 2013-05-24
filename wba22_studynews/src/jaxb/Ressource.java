@@ -17,20 +17,12 @@ import javax.xml.bind.Unmarshaller;
 
 
 
-public abstract class Ressource {
+public abstract class  Ressource {
 
 
 @SuppressWarnings("rawtypes")
 public Object unmarshal(Class clazz, String xml) throws JAXBException, IOException {
-
-	Object object = new Object();
 	
-	JAXBContext context = JAXBContext.newInstance(clazz);
-	Unmarshaller unmarshaller = context.createUnmarshaller();
-	object = (Object) unmarshaller.unmarshal(new File(xml));
-	
-	return object;
-	/*
 	Object object = new Object();
 	JAXBContext jc = JAXBContext.newInstance(clazz);
 	Unmarshaller unmarshaller = jc.createUnmarshaller();
@@ -42,7 +34,7 @@ public Object unmarshal(Class clazz, String xml) throws JAXBException, IOExcepti
 	reader.close();
 	}
 	return object;
-	*/
+	
 }
 
 @SuppressWarnings("rawtypes")

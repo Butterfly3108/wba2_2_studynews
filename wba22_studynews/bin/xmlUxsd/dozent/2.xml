@@ -1,7 +1,5 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dozent id="2" xmlns="http://www.example.org/dozent" 
-	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-    xsi:schemaLocation="http://example.org/dozent">
+<?xml version="1.0" encoding="UTF-8"
+<dozent id="2" xmlns="http://www.example.org/dozent">
 		<titel>Prof. Dr. rer. nat. Wolfgang Konen</titel>
 		<adresse>
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
