@@ -3,49 +3,23 @@
 				
 	<xs:element name="dozent">
 		<xs:complexType>
-			<xs:complexContent>
-				<xs:extension base="ct_dozent">
-					<xs:attribute name="id" type="xs:nonNegativeInteger"/>
-				</xs:extension>
-			</xs:complexContent>
+			<xs:sequence>
+				<xs:element name="titel" type="xs:string" />
+				<xs:element name="adresse" type="ct_adresse"/>
+				<xs:element name="lehre" type="ct_lehre"/>
+				<xs:element name="newsticker" type="ct_newsticker"/>
+				<xs:element name="abonnenten" type="ct_abonnenten"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:nonNegativeInteger"/>
 		</xs:complexType>
 	</xs:element>
-	
-	<xs:complexType name="ct_dozent">
-		<xs:sequence>
-			<xs:element name="titel" type="xs:string" />
-			<xs:element name="adresse" type="ct_adresse"/>
-			<xs:element name="lehre" type="ct_lehre"/>
-			<xs:element name="newsticker" type="ct_newsticker"/>
-			<xs:element name="abonnenten" type="ct_abonnenten"/>
-		</xs:sequence>
-	</xs:complexType>
 	
 	<xs:complexType name="ct_adresse">
 		<xs:sequence>
 		<xs:element name="anschrift" type="xs:string" />
-			<xs:element name="raumnr">
-				<xs:complexType>
-					<xs:attribute name="nummer" type="xs:nonNegativeInteger" />
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="tel">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="nummer" minOccurs="0" maxOccurs="unbounded">
-							<xs:complexType>
-								<xs:attribute name="art" type="xs:string" />
-								<xs:attribute name="nr" type="xs:string" />
-							</xs:complexType>
-						</xs:element>
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
-			<xs:element name="email">
-				<xs:complexType>
-					<xs:attribute name="adresse" type="xs:string" />
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="raum" type="xs:nonNegativeInteger" />
+			<xs:element name="tel" type="xs:nonNegativeInteger"/>	
+			<xs:element name="email" type="xs:string" />
 		</xs:sequence>
 	</xs:complexType>	
 	
@@ -91,11 +65,7 @@
 	
 	<xs:complexType name="ct_abonnenten">
 		<xs:sequence>
-			<xs:element name="abonnent" minOccurs="0" maxOccurs="unbounded">
-				<xs:complexType>
-					<xs:attribute name="name" />
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="abonnent" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 </xs:schema>

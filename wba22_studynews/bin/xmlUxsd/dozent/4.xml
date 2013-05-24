@@ -1,24 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <dozent id="4">
-	
  	<titel>Prof. Dipl. Des. Christian Noss</titel>
  	<adresse>
     	<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
-    	<raumnr nummer="3241" />
-    	<tel>
-      		<nummer art="Telefon" nr="+49 2261 8196 6412" />
-    	</tel>
-    	<email adresse="christian.noss at fh-koeln.de" />
-  	</adresse>
-  <lehre>
-    <lehrgebiet>Kommunikationsdesign</lehrgebiet>
-    <url>http://www.gm.fh-koeln.de/~noss</url>
-    <veranstaltungen>
-    	<list kuerzel="GDVK">Grundlagen der visuellen Kommunikation</list>
-    </veranstaltungen>
-  </lehre>
-  <newsticker>
-	<eintrag datum="2013-03-23" verfasser="Prof. Dipl. Des. Christian Noss" modul="GDVK">Endlich geht es los!</eintrag>  
-  </newsticker>
-  <abonnenten/>
+    	<raum>3241</raum>
+    	<tel>0226181966412</tel>
+    	<email>christian.noss at gm.fh-koeln.de</email>
+ 	</adresse>
+ 	<lehre>
+    	<lehrgebiet>Kommunikationsdesign</lehrgebiet>
+    	<url>http://www.gm.fh-koeln.de/~noss</url>
+    	<veranstaltungen>
+    		<list kuerzel="GDVK">Grundlagen der visuellen Kommunikation</list>
+    	</veranstaltungen>
+ 	</lehre>
+	<newsticker>
+		<eintrag datum="2013-03-23" verfasser="Prof. Dipl. Des. Christian Noss" modul="GDVK">Endlich geht es los!</eintrag>  
+	</newsticker>
+ 	<abonnenten>
+  		<abonnent>Daniela Kucharczyk</abonnent>
+	</abonnenten>
 </dozent>

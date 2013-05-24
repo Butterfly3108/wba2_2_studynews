@@ -3,12 +3,9 @@
 		<titel>Prof. Dr. Horst Stenzel</titel>
 		<adresse>
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
-			<raumnr nummer="3207" />
-			<tel>
-				<nummer art="Telefon" nr="+49 2261 8196 6403" />
-				<nummer art="Fax" nr="+49 2261 8196 6666" />
-			</tel>
-			<email adresse="stenzel at gm.fh-koeln.de" />
+			<raum>3207</raum>
+			<tel>0226181966403</tel>
+			<email>stenzel at gm.fh-koeln.de</email>
 		</adresse>
 		<lehre>
 			<lehrgebiet>Angewandte Mathematik und Informatik</lehrgebiet>
@@ -25,6 +22,6 @@
 			<eintrag datum="2013-03-22" verfasser="Prof. Dr. Horst Stenzel" modul="BS1">Organisation und Gruppeneinteilung für die Praktika!</eintrag>
 		</newsticker>
 		<abonnenten>
-			<abonnent name="Daniela Kucharczyk" />
+			<abonnent>Daniela Kucharczyk</abonnent>
 		</abonnenten>
 </dozent>

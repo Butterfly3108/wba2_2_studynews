@@ -23,6 +23,7 @@ import javax.xml.bind.Unmarshaller;
 
 
 
+
 import jaxb.Ressource;
 import dozenten.Dozent;
 import dozenten.ObjectFactory;
@@ -55,6 +56,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 			return dozent;		
 		}
 		
+
 		
 		@POST
 		@Consumes(MediaType.APPLICATION_XML)
@@ -63,7 +65,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 			Dozentenliste dozentenliste = getAll();
 			int dozentId = dozentenliste.getDEintrag().get(dozentenliste.getDEintrag().size()-1).getDozentId().intValue()+1;
 			
-			dozent.setId(BigInteger.valueOf(dozentId));
+			dozent.setId(BigInteger.valueOf(dozentId));	
 			
 			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", "http://example.org/dozent dozent.xsd ");
 			
@@ -93,7 +95,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 			String result2 = null;
 			
 			for(int i = 0; i < dozentenliste.getDEintrag().size(); i++) {
-				if(dozentenliste.getDEintrag().get(i).getDozentId().equals(id)) {
+				if(dozentenliste.getDEintrag().get(i).getDozentId().equals(id) ) {
 					dozentenliste.getDEintrag().remove(i);
 					result = "Eintrag in Liste entfernt";
 				} else {
@@ -106,6 +108,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml");
 
 			file.delete();
+			result2 = id+".xml entfernt";
 			
 			return Response.noContent().entity(result).entity(result2).build();
 		}

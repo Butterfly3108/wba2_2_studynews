@@ -1,23 +1,23 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<dozentenliste>
-	<dEintrag>
-		<dozent_id>1</dozent_id>
-		<name>Prof. Dr. Kristian Fischer</name>
-		<lehrgebiet>Informatik, Schwerpunkt Multimediasysteme und Anwendungsentwicklung</lehrgebiet>
-	</dEintrag>
-	<dEintrag>
-		<dozent_id>2</dozent_id>
-		<name>Prof. Dr. rer. nat. Wolfgang Konen</name>
-		<lehrgebiet>Mathematik, Angewandte Informatik</lehrgebiet>
-	</dEintrag>
-	<dEintrag>
-		<dozent_id>3</dozent_id>
-		<name>Prof. Dr. Horst Stenzel</name>
-		<lehrgebiet>Angewandte Mathematik und Informatik</lehrgebiet>
-	</dEintrag>
-	<dEintrag>
-		<dozent_id>4</dozent_id>
-		<name>Prof. Dipl. Des. Christian Noss</name>
-		<lehrgebiet>Kommunikationsdesign</lehrgebiet>
-	</dEintrag>
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dozentenliste xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/ticket ../xmlUxsd/dozentenliste.xsd">
+    <dEintrag dozentId="1">
+        <name>Prof. Dr. Kristian Fischer</name>
+        <lehrgebiet>Informatik, Schwerpunkt Multimediasysteme und Anwendungsentwicklung</lehrgebiet>
+    </dEintrag>
+    <dEintrag dozentId="2">
+        <name>Prof. Dr. rer. nat. Wolfgang Konen</name>
+        <lehrgebiet>Mathematik, Angewandte Informatik</lehrgebiet>
+    </dEintrag>
+    <dEintrag dozentId="3">
+        <name>Prof. Dr. Horst Stenzel</name>
+        <lehrgebiet>Angewandte Mathematik und Informatik</lehrgebiet>
+    </dEintrag>
+    <dEintrag dozentId="4">
+        <name>Prof. Dipl. Des. Christian Noss</name>
+        <lehrgebiet>Kommunikationsdesign</lehrgebiet>
+    </dEintrag>
+    <dEintrag dozentId="5">
+        <name>Max Mustermann</name>
+        <lehrgebiet>Musterlehre</lehrgebiet>
+    </dEintrag>
 </dozentenliste>

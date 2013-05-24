@@ -3,12 +3,9 @@
 		<titel>Prof. Dr. Kristian Fischer</titel>
 		<adresse>
 			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
-			<raumnr nummer="3241" />
-			<tel>
-				<nummer art="Telefon" nr="+49 2261 8196 6297" />
-				<nummer art="Fax" nr="+49 2261 8196 6666" />
-			</tel>
-			<email adresse="fischer at gm.fh-koeln.de" />
+			<raum>3241</raum>
+			<tel>0226181966297</tel>
+			<email>fischer at gm.fh-koeln.de</email>
 		</adresse>
 		<lehre>
 			<lehrgebiet>Informatik, Schwerpunkt Multimediasysteme und Anwendungsentwicklung</lehrgebiet>
@@ -26,6 +23,6 @@
 			<eintrag datum="2013-03-14" verfasser="Prof. Dr. Kristian Fischer" modul="WBA2">WBA2 startet am 15.05.2013! Oraganisatorische Sachen werden in der ersten Vorlesung besprochen.</eintrag>
 		</newsticker>
 		<abonnenten>
-			<abonnent name="Daniela Kucharczyk" />
+			<abonnent>Daniela Kucharczyk</abonnent>
 		</abonnenten>
 </dozent>
