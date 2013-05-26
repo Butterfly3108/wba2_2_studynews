@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<student id="2">
+			<name>Paul Will</name>
+			<kennung>mi1111</kennung>
+			<studiengang>Medieninformatik</studiengang>
+			<semester>6</semester>
+			<email>pontchster at gmail.com</email>
+			<abos>
+				<module>
+					<modul kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</modul>
+				</module>
+				<dozenten>
+					<dozent dozentId="1">Prof. Dr. Kristian Fischer</dozent>
+					<dozent dozentId="4">Prof. Dipl. Des. Christian Noss</dozent>
+				</dozenten>
+			</abos>
+		</student>

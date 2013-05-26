@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<studentenliste xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/student ../xmlUxsd/studentenliste.xsd">
+	<dEintrag studentId="1">
+		<name>Daniela Kucharczyk</name>
+	</dEintrag>
+	<dEintrag studentId="2">
+		<name>Paul Will</name>
+	</dEintrag>
+</studentenliste>

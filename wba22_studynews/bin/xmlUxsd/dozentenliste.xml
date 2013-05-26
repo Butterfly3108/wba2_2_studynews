@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<dozentenliste xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/ticket ../xmlUxsd/dozentenliste.xsd">
+<dozentenliste xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/dozent ../xmlUxsd/dozentenliste.xsd">
     <dEintrag dozentId="1">
         <name>Prof. Dr. Kristian Fischer</name>
         <lehrgebiet>Informatik, Schwerpunkt Multimediasysteme und Anwendungsentwicklung</lehrgebiet>
@@ -15,9 +15,5 @@
     <dEintrag dozentId="4">
         <name>Prof. Dipl. Des. Christian Noss</name>
         <lehrgebiet>Kommunikationsdesign</lehrgebiet>
-    </dEintrag>
-    <dEintrag dozentId="5">
-        <name>Max Mustermann</name>
-        <lehrgebiet>Musterlehre</lehrgebiet>
     </dEintrag>
 </dozentenliste>

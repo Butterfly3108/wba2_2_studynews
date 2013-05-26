@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<student id="1">
+			<name>Daniela Kucharczyk</name>
+			<kennung>mi1059</kennung>
+			<studiengang>Medieninformatik</studiengang>
+			<semester>6</semester>
+			<email>daniela.kucharczyk at gmx.de</email>
+			<abos>
+				<module>
+					<modul kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</modul>
+					<modul kuerzel="MCI">Mensch-Computer Interaktion</modul>
+				</module>
+				<dozenten>
+					<dozent dozentId="2">Prof. Dr. Wolfgang Konen</dozent>
+				</dozenten>
+			</abos>
+		</student>

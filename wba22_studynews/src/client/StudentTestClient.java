@@ -7,15 +7,14 @@ import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
-import dozenten.Dozent;
-import dozenten.CtAdresse;
-import dozenten.ObjectFactory;
-import dozenten.CtLehre;
-import dozenten.CtLehre.Veranstaltungen;
-import dozenten.CtNewsticker;
-import dozenten.CtAbonnenten;
 
-public class DozentTestClient {
+import studenten.Student;
+import studenten.CtAbos;
+import studenten.CtDozent;
+import studenten.CtModul;
+import studenten.ObjectFactory;
+
+public class StudentTestClient {
 	
 	public static void main(String[] args) {
 		int auswahl = 0;
@@ -31,24 +30,21 @@ public class DozentTestClient {
 			try {
 
 				Client client = Client.create();
-				WebResource webResource = client.resource("http://localhost:4434/dozent/add/");
-				Dozent dozent = new ObjectFactory().createDozent();
+				WebResource webResource = client.resource("http://localhost:4434/student/add/");
+				Student student = new ObjectFactory().createStudent();
 				
-				dozent.setTitel("Max Mustermann");
-				dozent.setAdresse(new CtAdresse());
-				dozent.getAdresse().setAnschrift("Musterstraﬂe 1, 11111 Musterhausen");
-				dozent.getAdresse().setRaum(BigInteger.valueOf(1111));
-				dozent.getAdresse().setTel(BigInteger.valueOf(02261111111));
-				dozent.getAdresse().setEmail("mustermann at gm.fh-koeln.de");
-				dozent.setLehre(new CtLehre());
-				dozent.getLehre().setLehrgebiet("Musterlehre");
-				dozent.getLehre().setUrl("http://www.gm.fh-koeln.de/~mustermann");
-				dozent.getLehre().setVeranstaltungen(new Veranstaltungen());
-				dozent.setNewsticker(new CtNewsticker());
-				dozent.setAbonnenten(new CtAbonnenten());
+				student.setName("Max Mustermann");
+				student.setKennung("mi1212");
+				student.setStudiengang("Medieninformatik");
+				student.setSemester(BigInteger.valueOf(6));
+				student.setEmail("max.mustermann at gmx.de");
+				student.setAbos(new CtAbos());
+				student.getAbos().setModule(new CtModul());
+				student.getAbos().setDozent(new CtDozent());
 				
 				
-				ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class, dozent);
+				
+				ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class, student);
 				
 				if (response.getStatus() != 201) {
 					throw new RuntimeException("Failed : HTTP error code : "+ response.getStatus());
@@ -69,7 +65,7 @@ public class DozentTestClient {
 			String id = in.nextLine();
 			try {
 				Client client = Client.create();
-				WebResource webResource = client.resource("http://localhost:4434/dozent/"+id+"/delete");
+				WebResource webResource = client.resource("http://localhost:4434/student/"+id+"/delete");
 				ClientResponse response = webResource.accept("application/xml").delete(ClientResponse.class);
 				
 				if (response.getStatus() != 200) {
@@ -91,7 +87,7 @@ public class DozentTestClient {
 			try {
 				 
 				Client client = Client.create();
-				WebResource webResource = client.resource("http://localhost:4434/dozent/");
+				WebResource webResource = client.resource("http://localhost:4434/student/");
 				ClientResponse response = webResource.accept("application/xml").get(ClientResponse.class);
 		 
 				if (response.getStatus() != 200) {
@@ -116,7 +112,7 @@ public class DozentTestClient {
 				String id = in.nextLine();
 				
 				Client client = Client.create();		 
-				WebResource webResource = client.resource("http://localhost:4434/dozent/"+id);		 
+				WebResource webResource = client.resource("http://localhost:4434/student/"+id);		 
 				ClientResponse response = webResource.accept("application/xml").get(ClientResponse.class);
 		 
 				if (response.getStatus() != 200) {

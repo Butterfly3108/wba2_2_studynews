@@ -1,6 +1,5 @@
 package restfulWebservice;
 
-import java.io.FileReader;
 import java.io.IOException;
 import java.math.BigInteger;
 import java.io.File;
@@ -15,18 +14,11 @@ import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
-import javax.xml.bind.JAXBContext;
 import javax.xml.bind.JAXBException;
-import javax.xml.bind.Unmarshaller;
 //import javax.ws.rs.core.MediaType;
-
-
-
-
 
 import jaxb.Ressource;
 import dozenten.Dozent;
-import dozenten.ObjectFactory;
 import dozentenliste.Dozentenliste;
 import dozentenliste.Dozentenliste.DEintrag;
 
@@ -117,7 +109,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 		@PUT
 		@Consumes(MediaType.APPLICATION_XML)
 		@Path("{id}/edit")
-		public Response setStatus(@PathParam("id") BigInteger id) {
+		public Response editDozent(@PathParam("id") BigInteger id, Dozent dozent) {
 			return Response.status(201).build();
 		}
 		
