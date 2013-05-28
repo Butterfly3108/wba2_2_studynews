@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-	<modul>
-		<titel id="1" kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</titel>
+	<modul id="1">
+		<zustand>online</zustand>
+		<bezeichnung kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</bezeichnung>
 		<status>Pflichtfach</status>
 		<credits>5 ECTS-P</credits>
 		<aufwand>4 SWS</aufwand>

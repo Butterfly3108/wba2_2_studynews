@@ -8,7 +8,7 @@ import javax.ws.rs.Consumes;
 import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.DELETE;
-import javax.ws.rs.PUT;
+//import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 import javax.ws.rs.Produces;
@@ -94,7 +94,7 @@ import studentenliste.Studentenliste.DEintrag;
 				}
 			}
 			
-			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentliste.xml", "http://example.org/ticket ../xmlUxsd/studentliste.xsd");
+			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentliste.xml", "http://example.org/student ../xmlUxsd/studentliste.xsd");
 			
 			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/student/"+id+".xml");
 
@@ -105,12 +105,12 @@ import studentenliste.Studentenliste.DEintrag;
 		}
 		
 		
-		@PUT
-		@Consumes(MediaType.APPLICATION_XML)
-		@Path("{id}/edit")
-		public Response editStudent(@PathParam("id") BigInteger id, Student dozent) {
-			return Response.status(201).build();
-		}
+//		@PUT
+//		@Consumes(MediaType.APPLICATION_XML)
+//		@Path("{id}/edit")
+//		public Response editStudent(@PathParam("id") BigInteger id, Student student) {
+//			return Response.status(201).build();
+//		}
 		
 		
 }

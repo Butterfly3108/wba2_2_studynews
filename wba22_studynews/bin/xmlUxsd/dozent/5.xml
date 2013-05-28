@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dozent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="5" xsi:schemaLocation="http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd">
+    <titel>Max Mustermann</titel>
+    <adresse>
+        <anschrift>Musterstraße 1, 11111 Musterhausen</anschrift>
+        <raum>1111</raum>
+        <tel>314872393</tel>
+        <email>mustermann at gm.fh-koeln.de</email>
+    </adresse>
+    <lehre>
+        <lehrgebiet>Musterlehre</lehrgebiet>
+        <url>http://www.gm.fh-koeln.de/~mustermann</url>
+        <veranstaltungen>
+            <list kuerzel="ML">Musterlehre</list>
+        </veranstaltungen>
+    </lehre>
+    <newsticker>
+        <eintrag modul="ML" verfasser="Max Mustermann" datum="2013-05-06">Bla bla</eintrag>
+        <eintrag modul="ML" verfasser="Max Mustermann" datum="2013-05-28">testinfo</eintrag>
+        <eintrag modul="ML" verfasser="Max Mustermann" datum="2013-05-28+02:00">test test</eintrag>
+    </newsticker>
+    <abonnenten/>
+</dozent>

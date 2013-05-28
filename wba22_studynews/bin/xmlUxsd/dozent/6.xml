@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<dozent xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" id="6" xsi:schemaLocation="http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd">
+    <titel>MaxMustermann</titel>
+    <adresse>
+        <anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
+        <raum>1111</raum>
+        <tel>2111111</tel>
+        <email>Mustermann at gm.fh-koeln.de</email>
+    </adresse>
+    <lehre>
+        <lehrgebiet></lehrgebiet>
+        <url>http://www.gm.fh-koeln.de/~Mustermann</url>
+        <veranstaltungen>
+            <list kuerzel="ML"></list>
+        </veranstaltungen>
+    </lehre>
+    <newsticker>
+        <eintrag modul="ML" verfasser="MaxMustermann" datum="2013-05-28+02:00">info</eintrag>
+        <eintrag modul="ML" verfasser="MaxMustermann" datum="2013-05-29+02:00">bla bla</eintrag>
+    </newsticker>
+    <abonnenten/>
+</dozent>

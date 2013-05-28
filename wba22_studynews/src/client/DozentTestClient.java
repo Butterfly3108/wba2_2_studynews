@@ -48,7 +48,7 @@ public class DozentTestClient {
 				String vorname = in.nextLine();
 				System.out.println("Geben Sie Ihren Nachnamen ein:");
 				String nachname = in.nextLine();
-				dozent.setTitel(vorname+nachname);
+				dozent.setTitel(vorname+" "+nachname);
 				dozent.setAdresse(new CtAdresse());
 				dozent.getAdresse().setAnschrift("Steinmüllerallee 1, 51643 Gummersbach");
 				System.out.println("Geben Sie Ihre Raumnummer ein:");
@@ -181,12 +181,13 @@ public class DozentTestClient {
 				Eintrag news = new Eintrag();
 				
 				GregorianCalendar gCalendar = new GregorianCalendar();
-		        XMLGregorianCalendar xmlCalendar = null;
-		        try {
-		        	xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
-		        } catch (DatatypeConfigurationException ex) {
-		        	
-		        }
+				Date currentDate = new Date();
+				gCalendar.setTime(currentDate);
+				XMLGregorianCalendar xmlCalendar = null;
+				try {
+					xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
+					} catch (DatatypeConfigurationException ex) {
+				}
 		        
 		        news.setDatum(xmlCalendar);
 				news.setModul(modul);
