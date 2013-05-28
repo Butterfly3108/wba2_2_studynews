@@ -1,6 +1,63 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<schema xmlns="http://www.w3.org/2001/XMLSchema" targetNamespace="http://www.example.org/modul" xmlns:tns="http://www.example.org/modul" elementFormDefault="qualified">
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 
+	<xs:element name="modul">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="zustand">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="online" />
+							<xs:enumeration value="offline" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="bezeichnung">
+					<xs:complexType>
+						<xs:simpleContent>
+							<xs:extension base="xs:string">
+								<xs:attribute name="kuerzel" type="xs:string" />
+							</xs:extension>
+						</xs:simpleContent>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="status">
+					<xs:simpleType>
+						<xs:restriction base="xs:string">
+							<xs:enumeration value="Pflichtfach" />
+							<xs:enumeration value="Wahlpflichtfach" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element name="aufwand" type="xs:string" />
+				<xs:element name="termin" type="xs:string" />
+				<xs:element name="beschreibung" type="ct_beschreibung" />
+				<xs:element name="abonnenten" type="ct_abonnenten"/>
+			</xs:sequence>
+			<xs:attribute name="id" type="xs:nonNegativeInteger" />
+		</xs:complexType>
+	</xs:element>
 
-
-</schema>
+	<xs:complexType name="ct_beschreibung">
+		<xs:sequence>
+			<xs:element name="dozent" type="xs:string" />
+			<xs:element name="lerninhalte">
+				<xs:complexType>
+					<xs:sequence>
+						<xs:element name="punkt" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+					</xs:sequence>
+				</xs:complexType>
+			</xs:element>
+			<xs:element name="lernmethode" type="xs:string" />
+			<xs:element name="voraussetzungen" type="xs:string" />
+			<xs:element name="veranstaltungsort" type="xs:string" />
+		</xs:sequence>
+	</xs:complexType>
+	
+	<xs:complexType name="ct_abonnenten">
+		<xs:sequence>
+			<xs:element name="abonnent" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
+		</xs:sequence>
+	</xs:complexType>
+	
+</xs:schema>
