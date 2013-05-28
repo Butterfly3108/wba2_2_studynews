@@ -25,6 +25,7 @@ import dozentenliste.Dozentenliste.DEintrag;
 	@Path ("/dozent")
 	public class DozentService extends Ressource {
 
+		private static String schemaLoc;
 		
 		@GET
 		@Produces(MediaType.APPLICATION_XML)
@@ -59,7 +60,8 @@ import dozentenliste.Dozentenliste.DEintrag;
 			
 			dozent.setId(BigInteger.valueOf(dozentId));	
 			
-			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", "http://example.org/dozent dozent.xsd ");
+			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd ";
+			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", schemaLoc);
 			
 			DEintrag dEintrag = new DEintrag();
 			dEintrag.setDozentId(BigInteger.valueOf(dozentId));
@@ -68,7 +70,8 @@ import dozentenliste.Dozentenliste.DEintrag;
 			
 			dozentenliste.getDEintrag().add(dEintrag);
 			
-			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", "http://example.org/ticket ../xmlUxsd/dozentenliste.xsd");
+			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozentenliste.xsd";
+			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", schemaLoc);
 			
 			String result = "Dozent mit der id: "+dozent.getId()+" hinzugefügt";
 
@@ -95,7 +98,8 @@ import dozentenliste.Dozentenliste.DEintrag;
 				}
 			}
 			
-			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", "http://example.org/ticket ../xmlUxsd/dozentenliste.xsd");
+			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozentenliste.xsd";
+			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", schemaLoc);
 			
 			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml");
 
@@ -105,13 +109,29 @@ import dozentenliste.Dozentenliste.DEintrag;
 			return Response.noContent().entity(result).entity(result2).build();
 		}
 		
-		
 		@PUT
 		@Consumes(MediaType.APPLICATION_XML)
-		@Path("{id}/edit")
-		public Response editDozent(@PathParam("id") BigInteger id, Dozent dozent) {
+		@Path("{id}/news")
+		public Response addNews(@PathParam("id") BigInteger id, Dozent newDozent) throws JAXBException, IOException {
+			Dozent dozent = getOne(id);
+			
+			newDozent.getNewsticker().getEintrag().get(0).setVerfasser(dozent.getTitel());
+			
+			dozent.getNewsticker().getEintrag().add(newDozent.getNewsticker().getEintrag().get(0));
+			
+			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd";
+			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml", schemaLoc);
+			
 			return Response.status(201).build();
 		}
+		
+		
+//		@PUT
+//		@Consumes(MediaType.APPLICATION_XML)
+//		@Path("{id}/edit")
+//		public Response editDozent(@PathParam("id") BigInteger id, Dozent dozent) {
+//			return Response.status(201).build();
+//		}
 		
 		
 }
