@@ -1,16 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema" elementFormDefault="qualified">
 	
-	<xs:element name="dozentenliste">
+	<xs:element name="modulliste">
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="dEintrag" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
-							<xs:element name="name" type="xs:string" />
-							<xs:element name="lehrgebiet" type="xs:string" />
+							<xs:element name="kuerzel" type="xs:string" />
+							<xs:element name="bezeichnung" type="xs:string" />
 						</xs:sequence>
-						<xs:attribute name="dozentId" type="xs:integer" />	
+						<xs:attribute name="modulId" type="xs:integer" />	
 					</xs:complexType>
 				</xs:element>
 			</xs:sequence>

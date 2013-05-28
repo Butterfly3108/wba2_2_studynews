@@ -67,7 +67,7 @@ import studentenliste.Studentenliste.DEintrag;
 			
 			studentliste.getDEintrag().add(dEintrag);
 			
-			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentliste.xml", "http://example.org/student ../xmlUxsd/studentliste.xsd");
+			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentenliste.xml", "http://example.org/student ../xmlUxsd/studentenliste.xsd");
 			
 			String result = "Student mit der id: "+student.getId()+" hinzugefügt";
 
@@ -94,7 +94,7 @@ import studentenliste.Studentenliste.DEintrag;
 				}
 			}
 			
-			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentliste.xml", "http://example.org/student ../xmlUxsd/studentliste.xsd");
+			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentenliste.xml", "http://example.org/student ../xmlUxsd/studentenliste.xsd");
 			
 			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/student/"+id+".xml");
 

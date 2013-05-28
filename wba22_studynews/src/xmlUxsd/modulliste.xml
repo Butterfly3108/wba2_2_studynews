@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<modulliste xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/modul ../xmlUxsd/modulliste.xsd">
+	<mEintrag modulId="1">
+		<kuerzel>WBA2</kuerzel>
+		<bezeichnung>Web-basierte Anwendungen 2: Verteilte Systeme</bezeichnung>
+	</mEintrag>
+</modulliste>
