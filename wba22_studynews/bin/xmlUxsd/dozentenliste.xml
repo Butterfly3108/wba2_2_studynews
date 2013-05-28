@@ -16,4 +16,8 @@
         <name>Prof. Dipl. Des. Christian Noss</name>
         <lehrgebiet>Kommunikationsdesign</lehrgebiet>
     </dEintrag>
+    <dEintrag dozentId="5">
+        <name>Max Mustermann</name>
+        <lehrgebiet>Musterlehre</lehrgebiet>
+    </dEintrag>
 </dozentenliste>
