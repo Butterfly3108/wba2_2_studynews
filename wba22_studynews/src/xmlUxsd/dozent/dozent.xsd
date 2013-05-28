@@ -7,7 +7,13 @@
 				<xs:element name="titel" type="xs:string" />
 				<xs:element name="adresse" type="ct_adresse"/>
 				<xs:element name="lehre" type="ct_lehre"/>
-				<xs:element name="newsticker" type="ct_newsticker"/>
+				<xs:element name="newsticker">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="eintrag" type="ct_eintrag" />
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
 				<xs:element name="abonnenten" type="ct_abonnenten"/>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:nonNegativeInteger"/>

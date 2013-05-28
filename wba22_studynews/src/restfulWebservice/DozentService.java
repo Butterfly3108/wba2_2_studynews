@@ -19,6 +19,7 @@ import javax.xml.bind.JAXBException;
 
 import jaxb.Ressource;
 import dozenten.Dozent;
+import dozenten.CtNewsticker.Eintrag;
 import dozentenliste.Dozentenliste;
 import dozentenliste.Dozentenliste.DEintrag;
 
@@ -117,12 +118,14 @@ import dozentenliste.Dozentenliste.DEintrag;
 			
 			newDozent.getNewsticker().getEintrag().get(0).setVerfasser(dozent.getTitel());
 			
-			dozent.getNewsticker().getEintrag().add(newDozent.getNewsticker().getEintrag().get(0));
+			dozent.getNewsticker().getEintrag().add(dozent.getNewsticker().getEintrag().size(), newDozent.getNewsticker().getEintrag().get(0));
 			
 			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd";
 			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml", schemaLoc);
 			
-			return Response.status(201).build();
+			String result = "News gepostet!";
+			
+			return Response.status(201).entity(result).build();
 		}
 		
 		

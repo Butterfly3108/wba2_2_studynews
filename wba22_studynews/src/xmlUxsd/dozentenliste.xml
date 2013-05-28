@@ -20,4 +20,8 @@
         <name>Max Mustermann</name>
         <lehrgebiet>Musterlehre</lehrgebiet>
     </dEintrag>
+    <dEintrag dozentId="6">
+        <name>MaxMustermann</name>
+        <lehrgebiet></lehrgebiet>
+    </dEintrag>
 </dozentenliste>

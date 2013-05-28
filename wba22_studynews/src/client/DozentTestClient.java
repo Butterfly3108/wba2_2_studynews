@@ -32,9 +32,10 @@ public class DozentTestClient {
 		System.out.println("2: Dozent löschen");
 		System.out.println("3: Alle Dozenten anzeigen");
 		System.out.println("4: Einen Dozenten anzeigen");
-		System.out.println("5: News posten:");
+		System.out.println("5: News posten");
 		auswahl = in.nextInt();
 		in.nextLine();
+		
 		if(auswahl == 1) {
 			
 			try {
@@ -43,15 +44,25 @@ public class DozentTestClient {
 				WebResource webResource = client.resource("http://localhost:4434/dozent/add/");
 				Dozent dozent = new ObjectFactory().createDozent();
 				
-				dozent.setTitel("Max Mustermann");
+				System.out.println("Geben Sie Ihren Vornamen ein:");
+				String vorname = in.nextLine();
+				System.out.println("Geben Sie Ihren Nachnamen ein:");
+				String nachname = in.nextLine();
+				dozent.setTitel(vorname+nachname);
 				dozent.setAdresse(new CtAdresse());
-				dozent.getAdresse().setAnschrift("Musterstraße 1, 11111 Musterhausen");
-				dozent.getAdresse().setRaum(BigInteger.valueOf(1111));
-				dozent.getAdresse().setTel(BigInteger.valueOf(02261111111));
-				dozent.getAdresse().setEmail("mustermann at gm.fh-koeln.de");
+				dozent.getAdresse().setAnschrift("Steinmüllerallee 1, 51643 Gummersbach");
+				System.out.println("Geben Sie Ihre Raumnummer ein:");
+				int raumnr = in.nextInt();
+				dozent.getAdresse().setRaum(BigInteger.valueOf(raumnr));
+				System.out.println("Geben Sie Ihre Telefonnummer ein:");
+				int telnr = in.nextInt();
+				dozent.getAdresse().setTel(BigInteger.valueOf(telnr));
+				dozent.getAdresse().setEmail(nachname+" at gm.fh-koeln.de");
 				dozent.setLehre(new CtLehre());
-				dozent.getLehre().setLehrgebiet("Musterlehre");
-				dozent.getLehre().setUrl("http://www.gm.fh-koeln.de/~mustermann");
+				System.out.println("Geben Sie Ihr Lehrgebiet ein:");
+				String lehrgebiet = in.nextLine();
+				dozent.getLehre().setLehrgebiet(lehrgebiet);
+				dozent.getLehre().setUrl("http://www.gm.fh-koeln.de/~"+nachname);
 				dozent.getLehre().setVeranstaltungen(new Veranstaltungen());
 				
 				List newModul = new List();
@@ -151,44 +162,56 @@ public class DozentTestClient {
 		 
 			  }
 		} else if(auswahl == 5) {
-			System.out.println("Dozent-Id eingeben:");
-			String dozentId = in.nextLine();
-
-			System.out.println("Modul eingeben:");
-			String modul = in.nextLine();
-
-			System.out.println("News:");
-			String newsText = in.nextLine();
-
-			Eintrag news = new Eintrag();
-			
-			GregorianCalendar gCalendar = new GregorianCalendar();
-	        Date currentDate = new Date();
-	        gCalendar.setTime(currentDate);
-	        XMLGregorianCalendar xmlCalendar = null;
-	        try {
-	        	xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
-	        } catch (DatatypeConfigurationException ex) {
-	        	
-	        }
-	        
-	        news.setDatum(xmlCalendar);
-			news.setModul(modul);
-			news.setValue(newsText);
-			
+		
 			try {
+				
+				System.out.println("Dozent-Id eingeben:");
+				String dozentId = in.nextLine();
+
+				System.out.println("Modul eingeben:");
+				String modul = in.nextLine();
+
+				System.out.println("News:");
+				String newsText = in.nextLine();
+				
 				Client client = Client.create();
 				WebResource webResource = client.resource("http://localhost:4434/dozent/"+dozentId+"/news");
-	
-				ClientResponse response = webResource.accept("MediaType.APPLICATION_XML").put(ClientResponse.class);
+				
+				Dozent dozent = new Dozent();
+				Eintrag news = new Eintrag();
+				
+				GregorianCalendar gCalendar = new GregorianCalendar();
+		        XMLGregorianCalendar xmlCalendar = null;
+		        try {
+		        	xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
+		        } catch (DatatypeConfigurationException ex) {
+		        	
+		        }
+		        
+		        news.setDatum(xmlCalendar);
+				news.setModul(modul);
+				news.setValue(newsText);
+				dozent.setNewsticker(new CtNewsticker());
+				dozent.getNewsticker().getEintrag().add(news);
+				
+				ClientResponse response = webResource.accept("MediaType.APPLICATION_XML").put(ClientResponse.class, dozent);
 	
 				if (response.getStatus() != 201) {
 					throw new RuntimeException("Failed : HTTP error code : "+ response.getStatus());
 				}
+				
+				System.out.println("Output from Server .... \n");
+				String output = response.getEntity(String.class);
+				System.out.println(output);
+				
 			} catch (Exception e) {
+				
 				e.printStackTrace();
+				
 			} finally {
+				
 				in.close();
+				
 			}
 
 		}
