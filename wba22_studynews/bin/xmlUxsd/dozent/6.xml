@@ -17,6 +17,7 @@
     <newsticker>
         <eintrag modul="ML" verfasser="MaxMustermann" datum="2013-05-28+02:00">info</eintrag>
         <eintrag modul="ML" verfasser="MaxMustermann" datum="2013-05-29+02:00">bla bla</eintrag>
+        <eintrag modul="ML" verfasser="MaxMustermann" datum="2013-05-29+02:00">test bla bla</eintrag>
     </newsticker>
     <abonnenten/>
 </dozent>

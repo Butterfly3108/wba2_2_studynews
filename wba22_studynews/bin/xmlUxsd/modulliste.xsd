@@ -4,9 +4,10 @@
 	<xs:element name="modulliste">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="dEintrag" minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="mEintrag" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
+							<xs:element name="zustand" type="st_zustand" />
 							<xs:element name="kuerzel" type="xs:string" />
 							<xs:element name="bezeichnung" type="xs:string" />
 						</xs:sequence>
@@ -16,5 +17,12 @@
 			</xs:sequence>
 		</xs:complexType>
 	</xs:element>
+	
+	<xs:simpleType name="st_zustand">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="online" />
+			<xs:enumeration value="offline" />
+		</xs:restriction>
+	</xs:simpleType>
 
 </xs:schema>

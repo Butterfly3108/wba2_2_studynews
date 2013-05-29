@@ -19,10 +19,10 @@ public class StudentTestClient {
 	public static void main(String[] args) {
 		int auswahl = 0;
 		Scanner in = new Scanner(System.in);
-		System.out.println("1: Dozent erstellen");
-		System.out.println("2: Dozent löschen");
-		System.out.println("3: Alle Dozenten anzeigen");
-		System.out.println("4: Einen Dozenten anzeigen");
+		System.out.println("1: Student erstellen");
+		System.out.println("2: Student löschen");
+		System.out.println("3: Alle Studenten anzeigen");
+		System.out.println("4: Einen Student anzeigen");
 		auswahl = in.nextInt();
 		in.nextLine();
 		if(auswahl == 1) {

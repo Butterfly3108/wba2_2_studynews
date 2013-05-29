@@ -4,14 +4,7 @@
 	<xs:element name="modul">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="zustand">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="online" />
-							<xs:enumeration value="offline" />
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
+				<xs:element name="zustand" type="st_zustand" />
 				<xs:element name="bezeichnung">
 					<xs:complexType>
 						<xs:simpleContent>
@@ -21,14 +14,7 @@
 						</xs:simpleContent>
 					</xs:complexType>
 				</xs:element>
-				<xs:element name="status">
-					<xs:simpleType>
-						<xs:restriction base="xs:string">
-							<xs:enumeration value="Pflichtfach" />
-							<xs:enumeration value="Wahlpflichtfach" />
-						</xs:restriction>
-					</xs:simpleType>
-				</xs:element>
+				<xs:element name="status" type="xs:string" />
 				<xs:element name="aufwand" type="xs:string" />
 				<xs:element name="termin" type="xs:string" />
 				<xs:element name="beschreibung" type="ct_beschreibung" />
@@ -59,5 +45,12 @@
 			<xs:element name="abonnent" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
+	
+	<xs:simpleType name="st_zustand">
+		<xs:restriction base="xs:string">
+			<xs:enumeration value="online" />
+			<xs:enumeration value="offline" />
+		</xs:restriction>
+	</xs:simpleType>
 	
 </xs:schema>
