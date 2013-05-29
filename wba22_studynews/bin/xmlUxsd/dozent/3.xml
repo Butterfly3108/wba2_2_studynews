@@ -13,7 +13,7 @@
 			<url>http://www.gm.fh-koeln.de/hstl</url>
 			<sprechzeit>dienstags 14:00 - 14:45 Uhr</sprechzeit>
 			<veranstaltungen>
-				<list kuerzel="BS1">Betriebssysteme und verteilte Systeme</list>
+				<list modulId="3" kuerzel="BS1">Betriebssysteme und verteilte Systeme</list>
 			</veranstaltungen>
 		</lehre>
 		<newsticker>

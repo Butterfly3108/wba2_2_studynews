@@ -8,7 +8,7 @@
 		<termin>jährlich angeboten</termin>
 		
 		<beschreibung>
-			<dozent>Prof. Dr. Kristian Fischer</dozent>
+			<dozent dozentId="1">Prof. Dr. Kristian Fischer</dozent>
 			<lerninhalte>
 					<punkt>Modellierung von Daten für die Kommunikation im Web: Datenkommunikation in offenen Umgebungen; Prinzip von 
 					Auszeichnungssprachen; Datenmodellierung mit XML und XML Schemasprachen; Datenmodellierung mit RDF und RDFS </punkt>

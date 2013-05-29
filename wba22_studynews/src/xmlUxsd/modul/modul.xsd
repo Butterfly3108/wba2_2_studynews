@@ -26,7 +26,15 @@
 
 	<xs:complexType name="ct_beschreibung">
 		<xs:sequence>
-			<xs:element name="dozent" type="xs:string" />
+			<xs:element name="dozent">
+				<xs:complexType>
+					<xs:simpleContent>
+						<xs:extension base="xs:string">
+							<xs:attribute name="dozentId" type="xs:nonNegativeInteger" />
+						</xs:extension>
+					</xs:simpleContent>
+				</xs:complexType>
+			</xs:element>
 			<xs:element name="lerninhalte">
 				<xs:complexType>
 					<xs:sequence>

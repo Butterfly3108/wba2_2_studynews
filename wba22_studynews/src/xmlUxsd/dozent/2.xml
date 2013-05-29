@@ -12,7 +12,7 @@
 			<url>http://www.gm.fh-koeln.de/~konen/</url>
 			<sprechzeit>mittwochs 13:15 - 14:00 Uhr</sprechzeit>
 			<veranstaltungen>
-				<list kuerzel="MA2">Mathematik 2</list>
+				<list modulId="2" kuerzel="MA2">Mathematik 2</list>
 			</veranstaltungen>
 		</lehre>
 		<newsticker>

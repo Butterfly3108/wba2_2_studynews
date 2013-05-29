@@ -10,9 +10,7 @@
     <lehre>
         <lehrgebiet>Musterlehre</lehrgebiet>
         <url>http://www.gm.fh-koeln.de/~mustermann</url>
-        <veranstaltungen>
-            <list kuerzel="ML">Musterlehre</list>
-        </veranstaltungen>
+        <veranstaltungen/>
     </lehre>
     <newsticker>
         <eintrag modul="ML" verfasser="Max Mustermann" datum="2013-05-06">Bla bla</eintrag>

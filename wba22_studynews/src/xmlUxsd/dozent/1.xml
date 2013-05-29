@@ -13,7 +13,7 @@
 			<url>http://www.gm.fh-koeln.de/~fischer/</url>
 			<sprechzeit>dienstags 11:15 - 12:00 Uhr</sprechzeit>
 			<veranstaltungen>
-				<list kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</list>
+				<list modulId="1" kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</list>
 			</veranstaltungen>
 		</lehre>
 		<newsticker>
@@ -23,6 +23,6 @@
 			<eintrag datum="2013-03-14" verfasser="Prof. Dr. Kristian Fischer" modul="WBA2">WBA2 startet am 15.05.2013! Oraganisatorische Sachen werden in der ersten Vorlesung besprochen.</eintrag>
 		</newsticker>
 		<abonnenten>
-			<abonnent>Daniela Kucharczyk</abonnent>
+			<abonnent studentId="1">Daniela Kucharczyk</abonnent>
 		</abonnenten>
 </dozent>

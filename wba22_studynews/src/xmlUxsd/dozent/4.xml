@@ -11,7 +11,7 @@
     	<lehrgebiet>Kommunikationsdesign</lehrgebiet>
     	<url>http://www.gm.fh-koeln.de/~noss</url>
     	<veranstaltungen>
-    		<list kuerzel="GDVK">Grundlagen der visuellen Kommunikation</list>
+    		<list modulId="4" kuerzel="GDVK">Grundlagen der visuellen Kommunikation</list>
     	</veranstaltungen>
  	</lehre>
 	<newsticker>

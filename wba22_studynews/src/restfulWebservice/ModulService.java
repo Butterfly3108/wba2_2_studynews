@@ -5,17 +5,12 @@ import java.io.IOException;
 import java.math.BigInteger;
 
 import javax.ws.rs.*;
-import javax.ws.rs.Consumes;
-import javax.ws.rs.DELETE;
-import javax.ws.rs.GET;
-import javax.ws.rs.POST;
-import javax.ws.rs.Path;
-import javax.ws.rs.PathParam;
-import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
+import dozenten.Dozent;
+import dozenten.CtLehre.Veranstaltungen.List;
 import module.Modul;
 import modulliste.Modulliste;
 import modulliste.StZustand;
@@ -60,7 +55,7 @@ public class ModulService extends Ressource {
 		
 		modul.setId(BigInteger.valueOf(modulId));	
 		
-		schemaLoc = "http://example.org/modul ../xmlUxsd/module/modul.xsd ";
+		schemaLoc = "http://example.org/modul ../xmlUxsd/modul/modul.xsd ";
 		marshal(Modul.class, modul, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/modul/"+modulId+".xml", schemaLoc);
 		
 		MEintrag mEintrag = new MEintrag();
@@ -115,11 +110,33 @@ public class ModulService extends Ressource {
 	@Path("{id}/set")
 	public Response setStatus(@PathParam("id") BigInteger id, @QueryParam("status")String zustand) throws JAXBException, IOException {
 		Modul modul = getOne(id);
+
+		BigInteger dozentId = modul.getBeschreibung().getDozent().getDozentId();
+		Dozent dozent = new Dozent();
+		dozent = (Dozent) unmarshal(Dozent.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml");
+		
+		if(zustand.equals("online")) {
+			List newModul = new List();
+			newModul.setKuerzel(modul.getBezeichnung().getKuerzel());
+			newModul.setValue(modul.getBezeichnung().getValue());
+			dozent.getLehre().getVeranstaltungen().getList().add(newModul);
+		}
+		
+		if(zustand.equals("offline")) {
+			for(int i=0 ; i<dozent.getLehre().getVeranstaltungen().getList().size() ; i++ ) {
+				if(modul.getId().equals(dozent.getLehre().getVeranstaltungen().getList().get(i).getModulId())) {
+					dozent.getLehre().getVeranstaltungen().getList().remove(i);
+				}
+			}
+		}
+		
+		schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd ";
+		marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", schemaLoc);
 		
 		modul.setZustand(module.StZustand.fromValue(zustand));
 		
 		schemaLoc = "http://example.org/modul ../../schema/modul.xsd";
-		marshal(Modul.class, modul, "modul/"+id+".xml", schemaLoc);
+		marshal(Modul.class, modul, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/modul/"+id+".xml", schemaLoc);
 		
 		Modulliste mList = getAll();
 		
@@ -131,7 +148,7 @@ public class ModulService extends Ressource {
 			}
 		
 		schemaLoc = "http://example.org/modul ../schema/modulliste.xsd";
-		marshal(Modulliste.class, mList, "modulliste.xml", schemaLoc);
+		marshal(Modulliste.class, mList, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/modulliste.xml", schemaLoc);
 		
 		return Response.status(201).build();
 	}

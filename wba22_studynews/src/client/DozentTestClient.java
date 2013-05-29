@@ -18,7 +18,6 @@ import dozenten.CtAdresse;
 import dozenten.ObjectFactory;
 import dozenten.CtLehre;
 import dozenten.CtLehre.Veranstaltungen;
-import dozenten.CtLehre.Veranstaltungen.List;
 import dozenten.CtNewsticker;
 import dozenten.CtNewsticker.Eintrag;
 import dozenten.CtAbonnenten;
@@ -64,12 +63,6 @@ public class DozentTestClient {
 				dozent.getLehre().setLehrgebiet(lehrgebiet);
 				dozent.getLehre().setUrl("http://www.gm.fh-koeln.de/~"+nachname);
 				dozent.getLehre().setVeranstaltungen(new Veranstaltungen());
-				
-				List newModul = new List();
-				newModul.setKuerzel("ML");
-				newModul.setValue(dozent.getLehre().getLehrgebiet());
-				
-				dozent.getLehre().getVeranstaltungen().getList().add(newModul);
 				dozent.setNewsticker(new CtNewsticker());
 				dozent.setAbonnenten(new CtAbonnenten());
 				
