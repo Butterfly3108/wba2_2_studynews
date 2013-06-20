@@ -24,7 +24,7 @@ import xmpp.ConnectionHandler;
 import jaxb.Ressource;
 import jaxb.dozenten.Dozent;
 import jaxb.userDatabase.UserDatabase;
-import jaxb.userDatabase.Eintrag;
+import jaxb.userDatabase.UserDatabase.Eintrag;
 
 	@Path ("/dozent")
 	public class DozentService extends Ressource {

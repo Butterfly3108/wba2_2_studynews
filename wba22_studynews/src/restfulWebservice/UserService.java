@@ -16,7 +16,6 @@ import javax.xml.bind.JAXBException;
 
 import jaxb.Ressource;
 import jaxb.dozenten.Dozent;
-import jaxb.userDatabase.Eintrag;
 import jaxb.userDatabase.UserDatabase;
 
 @Path ("/user")
@@ -35,10 +34,10 @@ public class UserService extends Ressource {
 	@GET
 	@Path("/{id}")
 	@Produces(MediaType.APPLICATION_XML)
-	public Eintrag getOne(@PathParam("id") BigInteger id) throws JAXBException, IOException
+	public UserDatabase.Eintrag getOne(@PathParam("id") BigInteger id) throws JAXBException, IOException
 	{
 		UserDatabase liste = getAll();
-		Eintrag user= new Eintrag();
+		UserDatabase.Eintrag user= new UserDatabase.Eintrag();
 		
 		for(int i=0; i<liste.getEintrag().size(); i++){
 			if(liste.getEintrag().get(i).getId().equals(i)) {

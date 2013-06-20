@@ -12,14 +12,16 @@ import javax.swing.border.EmptyBorder;
 import javax.xml.bind.JAXBException;
 
 import xmpp.ClientFrame;
-import jaxb.userDatabase.Eintrag;
+import xmpp.ConnectionHandler;
+import xmpp.XMPPConfig;
+import jaxb.userDatabase.UserDatabase;
 
 public class ConnectionFrame extends JFrame {
 
     private static final long serialVersionUID = 1L;
 
     private MainMenuPanel mmp;
-    private Eintrag user;
+    private UserDatabase.Eintrag user;
     private ClientMain cm;
 
     private JPanel contentPane;

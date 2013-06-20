@@ -1,12 +1,12 @@
-<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
-<userDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="">
+<?xml version="1.0" encoding="UTF-8"?>
+<userDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="userDatabase.xsd">
     <eintrag id="1">
         <nachname>Fischer</nachname>
         <vorname>Kristian</vorname>
         <status>dozent</status>
     </eintrag>
     <eintrag id="2">
-        <name>Konen</name>
+        <nachname>Konen</nachname>
         <vorname>Wolfgang</vorname>
         <status>dozent</status>
     </eintrag>

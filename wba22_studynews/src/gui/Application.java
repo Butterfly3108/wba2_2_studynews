@@ -95,18 +95,18 @@ public class Application extends JFrame {
 		getContentPane().add(panelList.get(newPanel), BorderLayout.CENTER);
 		panelList.get(newPanel).setVisible(true);
 		
-		if(newPanel == 0) {
-			try {
-				loadProfile();
-				mmPanel.refreshProfile();
-			} catch (JAXBException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-		} //else
+//		if(newPanel == 0) {
+//			try {
+//				loadProfile();
+//				mmPanel.refreshProfile();
+//			} catch (JAXBException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			} catch (IOException e) {
+//				// TODO Auto-generated catch block
+//				e.printStackTrace();
+//			}
+//		} else
 		
 //		if(newPanel ==1) {
 //		euPanel.refresh();

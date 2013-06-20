@@ -25,7 +25,7 @@ import javax.xml.bind.JAXBException;
 import jaxb.Ressource;
 import jaxb.studenten.Student;
 import jaxb.userDatabase.UserDatabase;
-import jaxb.userDatabase.Eintrag;
+import jaxb.userDatabase.UserDatabase.Eintrag;
 
 	@Path ("/student")
 	public class StudentService extends Ressource {

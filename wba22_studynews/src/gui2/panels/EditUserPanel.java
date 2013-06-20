@@ -34,16 +34,16 @@ import com.sun.jersey.api.client.WebResource;
 
 import gui.Application;
 import gui2.ClientMain;
-import gui2.ConnectionHandler;
-import jaxb.userDatabase.Eintrag;
+import jaxb.userDatabase.UserDatabase.Eintrag;
 import jaxb.userDatabase.UserDatabase;
+import xmpp.ConnectionHandler;
 import xmpp2.PubsubClient;
 
 public class EditUserPanel extends JPanel {
 	
 	private ClientMain app;
 	private ConnectionHandler ch;
-	private Eintrag user;
+	private Eintrag user = new Eintrag();
 	
 	private JTextField vornameField;
 	private JTextField nachnameField;

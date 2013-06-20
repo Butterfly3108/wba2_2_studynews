@@ -23,10 +23,10 @@ import com.sun.jersey.api.client.WebResource;
 
 import gui.Application;
 import gui2.ClientMain;
-import gui2.ConnectionHandler;
-import jaxb.userDatabase.Eintrag;
+import jaxb.userDatabase.UserDatabase.Eintrag;
 import jaxb.userDatabase.UserDatabase;
 import xmpp.ConnectionFrame;
+import xmpp.ConnectionHandler;
 import xmpp.ItemEventCoordinator;
 import xmpp2.PubsubClient;
 
@@ -40,7 +40,7 @@ public class MainMenuPanel extends JPanel {
 	private JLabel nameField;
 	private JLabel userlevelField;
 	
-	private Eintrag user;
+	private Eintrag user = new Eintrag();
 	private ConnectionHandler ch;
 	private ClientMain app;
 	private JButton btnLogout;
@@ -273,12 +273,6 @@ public class MainMenuPanel extends JPanel {
 		STUDENT, DOZENT, ADMIN
 	}
 	
-	 public void setConnectionHandler(gui2.ConnectionHandler ch2) {
-	        this.ch = ch2;
 
-	        this.ch.addItemListener(new ItemEventCoordinator());
-	        
-	        refreshProfile();
-	    }
 
 }

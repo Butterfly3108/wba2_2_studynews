@@ -418,7 +418,7 @@ public class ConnectionHandler {
 	* @return username
 	*/
     public String getUsername() {
-        return xmpp_conn.getUser();
+        return username;
     }
     
     /**
