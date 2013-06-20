@@ -22,6 +22,8 @@ import org.jivesoftware.smackx.pubsub.LeafNode;
 import org.jivesoftware.smackx.pubsub.PubSubManager;
 import org.jivesoftware.smackx.pubsub.PublishModel;
 
+import xmpp.ConnectionHandler;
+
 
 public class NodeClient {
 
@@ -31,9 +33,9 @@ public class NodeClient {
 	*/
 	@SuppressWarnings({ "unchecked", "rawtypes" })
 	public static void main(String[] args) throws XMPPException {
-		ConnectionConfiguration config = new ConnectionConfiguration("localhost",5222, "Work");
-		XMPPConnection con = new XMPPConnection(config);
+		
 		Scanner in = new Scanner(System.in);
+		ConnectionHandler ch = new ConnectionHandler();
 		
 		System.out.println("Benutzername: ");
 		String username = in.nextLine();
@@ -41,13 +43,13 @@ public class NodeClient {
 		String password = in.nextLine();
 		
 		if(username != null || password != null) {
-			con.connect();
-			con.login(username, password);
+			ch.connect("localhost", 5222);
+			ch.login(username, password);
 		} else
 			System.out.println("Fehler!");
 		
 		String jid = username+"@localhost";
-		PubSubManager mgr = new PubSubManager(con);
+
 		LeafNode leaf;
 		List<Affiliation> affiliations;
 		int auswahl = 0;
@@ -70,91 +72,82 @@ public class NodeClient {
 			System.out.println("name: ");
 			nodeName = in.nextLine();
 			
-			ConfigureForm form = new ConfigureForm(FormType.submit);
-			form.setAccessModel(AccessModel.open);
-			form.setDeliverPayloads(true);
-			form.setNotifyRetract(true);
-			form.setPersistentItems(false);
-			form.setPublishModel(PublishModel.open);
-			leaf = mgr.createNode(nodeName);
-			leaf.sendConfigurationForm(form);
-			
-			System.out.println("Node nodeName erstellt");
+			ch.createNewNode(nodeName);
 			
 			break;
-			case 2:
-				affiliations = mgr.getAffiliations();
-				for(int i = 0; i < affiliations.size(); i++) {
-					System.out.println(affiliations.get(i).getNodeId());
-				}
-				System.out.println("wählen Sie aus:");
-				nodeName = in.nextLine();
-				leaf = mgr.getNode(nodeName);
-				
-				leaf.addItemEventListener(new ItemEventCoordinator());
-				leaf.subscribe(jid);
-				
-				try {
-					Thread.sleep( 1000 * 300);
-				} catch (InterruptedException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				break;
-			case 3:
-				affiliations = mgr.getAffiliations();
-				for(int i = 0; i < affiliations.size(); i++) {
-					System.out.println(affiliations.get(i).getNodeId());
-					leaf = mgr.getNode(affiliations.get(i).getNodeId());
-					System.out.println(leaf.getSubscriptions().get(0).getJid());
-				}
-				break;
-			case 4:
-				affiliations = mgr.getAffiliations();
-				for(int i = 0; i < affiliations.size(); i++) {
-					System.out.println(affiliations.get(i).getNodeId());
-				}
-				System.out.println("wählen Sie aus:");
-				nodeName = in.nextLine();
-				leaf = mgr.getNode(nodeName);
-				leaf.unsubscribe(jid);
-				break;
-			case 5:
-				System.out.println("Node wählen:");
-				nodeName = in.nextLine();
-				leaf = mgr.getNode(nodeName);
-				System.out.println(leaf.subscribe(jid).getId());
-				break;
-			case 6:
-				affiliations = mgr.getAffiliations();
-				for(int i = 0; i < affiliations.size(); i++) {
-					System.out.println(affiliations.get(i).getNodeId());
-				}
-				System.out.println("wählen Sie aus:");
-				nodeName = in.nextLine();
-				leaf = mgr.getNode(nodeName);
-				System.out.println("itemname:");
-				String itemName = in.nextLine();
-				// Datum und Uhrzeit
-				GregorianCalendar gCalendar = new GregorianCalendar();
-				Date currentDate = new Date();
-				gCalendar.setTime(currentDate);
-				XMLGregorianCalendar xmlCalendar = null;
-				try {
-					xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
-					} catch (DatatypeConfigurationException ex) {
-				}
-				leaf.publish(new PayloadItem(itemName + System.currentTimeMillis(), 
-				          new SimplePayload("notification", "", 
-				        		  "<notification><datum>"+xmlCalendar+"</datum><verfasser>Christian Noss</verfasser><topic>"+leaf.getId()+"</topic><nachricht>test</nachricht></notifications>")));
-				break;
-			case 7:
-				affiliations = mgr.getAffiliations();
-				for(int i = 0; i < affiliations.size(); i++) {
-					System.out.println(affiliations.get(i).getNodeId());
-					mgr.deleteNode(affiliations.get(i).getNodeId());
-				}
-			
+//			case 2:
+//				affiliations = mgr.getAffiliations();
+//				for(int i = 0; i < affiliations.size(); i++) {
+//					System.out.println(affiliations.get(i).getNodeId());
+//				}
+//				System.out.println("wählen Sie aus:");
+//				nodeName = in.nextLine();
+//				leaf = mgr.getNode(nodeName);
+//				
+//				leaf.addItemEventListener(new ItemEventCoordinator());
+//				leaf.subscribe(jid);
+//				
+//				try {
+//					Thread.sleep( 1000 * 300);
+//				} catch (InterruptedException e) {
+//					// TODO Auto-generated catch block
+//					e.printStackTrace();
+//				}
+//				break;
+//			case 3:
+//				affiliations = mgr.getAffiliations();
+//				for(int i = 0; i < affiliations.size(); i++) {
+//					System.out.println(affiliations.get(i).getNodeId());
+//					leaf = mgr.getNode(affiliations.get(i).getNodeId());
+//					System.out.println(leaf.getSubscriptions().get(0).getJid());
+//				}
+//				break;
+//			case 4:
+//				affiliations = mgr.getAffiliations();
+//				for(int i = 0; i < affiliations.size(); i++) {
+//					System.out.println(affiliations.get(i).getNodeId());
+//				}
+//				System.out.println("wählen Sie aus:");
+//				nodeName = in.nextLine();
+//				leaf = mgr.getNode(nodeName);
+//				leaf.unsubscribe(jid);
+//				break;
+//			case 5:
+//				System.out.println("Node wählen:");
+//				nodeName = in.nextLine();
+//				leaf = mgr.getNode(nodeName);
+//				System.out.println(leaf.subscribe(jid).getId());
+//				break;
+//			case 6:
+//				affiliations = mgr.getAffiliations();
+//				for(int i = 0; i < affiliations.size(); i++) {
+//					System.out.println(affiliations.get(i).getNodeId());
+//				}
+//				System.out.println("wählen Sie aus:");
+//				nodeName = in.nextLine();
+//				leaf = mgr.getNode(nodeName);
+//				System.out.println("itemname:");
+//				String itemName = in.nextLine();
+//				// Datum und Uhrzeit
+//				GregorianCalendar gCalendar = new GregorianCalendar();
+//				Date currentDate = new Date();
+//				gCalendar.setTime(currentDate);
+//				XMLGregorianCalendar xmlCalendar = null;
+//				try {
+//					xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
+//					} catch (DatatypeConfigurationException ex) {
+//				}
+//				leaf.publish(new PayloadItem(itemName + System.currentTimeMillis(), 
+//				          new SimplePayload("notification", "", 
+//				        		  "<notification><datum>"+xmlCalendar+"</datum><verfasser>Christian Noss</verfasser><topic>"+leaf.getId()+"</topic><nachricht>test</nachricht></notifications>")));
+//				break;
+//			case 7:
+//				affiliations = mgr.getAffiliations();
+//				for(int i = 0; i < affiliations.size(); i++) {
+//					System.out.println(affiliations.get(i).getNodeId());
+//					mgr.deleteNode(affiliations.get(i).getNodeId());
+//				}
+//			
 		}
 	}
 }

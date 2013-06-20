@@ -122,8 +122,10 @@ public class ConnectionHandler {
         	form.setNotifyRetract(true);
         	form.setPersistentItems(false);
         	form.setPublishModel(PublishModel.open);
+        	
         	node = pubsub_man.createNode(nodeName);
         	node.sendConfigurationForm(form);
+        	
 
         } catch (XMPPException e1) {
             System.err.println("Node konnte nicht erstellt werden!");
@@ -212,7 +214,7 @@ public class ConnectionHandler {
             
 		node.publish(new PayloadItem(nodeName + System.currentTimeMillis(), 
 					          new SimplePayload("notification", "",
-					            	    "<notification>" +
+					            	    "<notification xmlns=''>" +
 					                    "<datum>"+xmlCalendar+"</datum>"+
 					                    "<verfasser>"+getUsername()+"</verfasser>" +
 					                    "<topic>"+nodeName+"</topic>" +
@@ -235,7 +237,7 @@ public class ConnectionHandler {
         try {
             node = pubsub_man.getNode(nodeName);
             node.subscribe(this.username + "@" + this.hostname);
-            node.addItemEventListener(listener);
+            node.addItemEventListener(new ItemEventCoordinator());
         } catch (XMPPException e) {
 
             System.err.println("Node nicht gefunden! Neuer Node wird angelegt.");
@@ -316,7 +318,12 @@ public class ConnectionHandler {
             List<Subscription> subs = pubsub_man.getSubscriptions();
 
             for (Subscription curr : subs) {
-                entries.add(curr.getNode());
+                System.out.println(curr.getNode());
+                System.out.println(curr.getId());
+            	entries.add(curr.getNode());
+            	LeafNode node = pubsub_man.getNode(curr.getNode());
+            	node.addItemEventListener(new ItemEventCoordinator());
+                
             }
 
         } catch (XMPPException e) {
@@ -337,16 +344,16 @@ public class ConnectionHandler {
         String info = "";
 
         ServiceDiscoveryManager discoManager = ServiceDiscoveryManager.getInstanceFor(xmpp_conn);
-
+        discoManager.setIdentityName(nodeName);
         DiscoverInfo discoInfo;
         try {
             discoInfo = discoManager.discoverInfo("pubsub." + xmpp_conn.getHost(), nodeName);
-
+            
             Iterator<Identity> it = discoInfo.getIdentities();
-
+            //System.out.println(it.);
             while (it.hasNext()) {
                 DiscoverInfo.Identity identity = (DiscoverInfo.Identity) it.next();
-                info += "Name:\t" + identity.getName() + "\n" + "Type:\t"+ identity.getType() + "\n" + "Kategorie:\t"+ identity.getCategory() + "\n";
+                info += "Name:\t" + discoInfo.getNode() + "\n" + "Type:\t"+ identity.getType() + "\n" + "Kategorie:\t"+ identity.getCategory() + "\n";
 
                 LeafNode node = pubsub_man.getNode(nodeName);
 
@@ -388,22 +395,22 @@ public class ConnectionHandler {
         
         for (Subscription curr : subs) {
             try {
-                pubsub_man.getNode(curr.getNode()).addItemEventListener(listener);
+                pubsub_man.getNode(curr.getNode()).addItemEventListener(new ItemEventCoordinator());
             } catch (XMPPException e) {
                 System.err.println("Node nicht gefunden, um Listener anzufügen!");
             }
         }
     }
 
-    /**
-	* Fügt einen Listener hinzu der alle eingehenden Nachrichten ausgibt
-	*
-	* @param listener 
-	*/
-    public void addItemListener(ItemEventListener<Item> listener) {
-        this.listener = listener;
-        attachListenerToSubscribedNodes();
-    }
+//    /**
+//	* Fügt einen Listener hinzu der alle eingehenden Nachrichten ausgibt
+//	*
+//	* @param listener 
+//	*/
+//    public void addItemListener(ItemEventListener<Item> listener) {
+//        this.listener = listener;
+//        attachListenerToSubscribedNodes();
+//    }
 
     /**
 	* Gibt den Usernamen, des aktuell angemeldeten Benutzers zurück

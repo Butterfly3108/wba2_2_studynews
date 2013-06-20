@@ -287,8 +287,6 @@ public class ClientFrame extends JFrame {
 
     public void setConnectionHandler(ConnectionHandler ch) {
         this.ch = ch;
-
-        this.ch.addItemListener(new ItemEventCoordinator());
         
         labelUsername.setText(ch.getUsername() + "@" + ch.getHost());
         
