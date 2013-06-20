@@ -17,10 +17,14 @@ import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 //import javax.ws.rs.core.MediaType;
 
+
+
+
+import xmpp.ConnectionHandler;
 import jaxb.Ressource;
-import dozenten.Dozent;
-import dozentenliste.Dozentenliste;
-import dozentenliste.Dozentenliste.DEintrag;
+import jaxb.dozenten.Dozent;
+import jaxb.userDatabase.UserDatabase;
+import jaxb.userDatabase.Eintrag;
 
 	@Path ("/dozent")
 	public class DozentService extends Ressource {
@@ -29,12 +33,12 @@ import dozentenliste.Dozentenliste.DEintrag;
 		
 		@GET
 		@Produces(MediaType.APPLICATION_XML)
-		public Dozentenliste getAll() throws JAXBException, IOException
+		public UserDatabase getAll() throws JAXBException, IOException
 		{
-				Dozentenliste dozentenliste = new Dozentenliste();
-				dozentenliste = (Dozentenliste) unmarshal(Dozentenliste.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml");
+			UserDatabase userDatabase = new UserDatabase();
+			userDatabase = (UserDatabase) unmarshal(UserDatabase.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/userDatabase.xml");
 				
-				return dozentenliste;
+				return userDatabase;
 		}
 	
 		
@@ -55,23 +59,26 @@ import dozentenliste.Dozentenliste.DEintrag;
 		@Consumes(MediaType.APPLICATION_XML)
 		@Path("/add")
 		public Response post(Dozent dozent) throws JAXBException, IOException {
-			Dozentenliste dozentenliste = getAll();
-			int dozentId = dozentenliste.getDEintrag().get(dozentenliste.getDEintrag().size()-1).getDozentId().intValue()+1;
+			UserDatabase liste = getAll();
+			int dozentId = liste.getEintrag().get(liste.getEintrag().size()-1).getId().intValue()+1;
 			
 			dozent.setId(BigInteger.valueOf(dozentId));	
 			
 			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd ";
 			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", schemaLoc);
 			
-			DEintrag dEintrag = new DEintrag();
-			dEintrag.setDozentId(BigInteger.valueOf(dozentId));
-			dEintrag.setName(dozent.getTitel());
-			dEintrag.setLehrgebiet(dozent.getLehre().getLehrgebiet());
+			ConnectionHandler ch = new ConnectionHandler();
+			ch.createNewNode(dozent.getNachname());
 			
-			dozentenliste.getDEintrag().add(dEintrag);
+			Eintrag dEintrag = new Eintrag();
+			dEintrag.setId(BigInteger.valueOf(dozentId));
+			dEintrag.setNachname(dozent.getNachname());
+			dEintrag.setVorname(dozent.getVorname());
 			
-			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozentenliste.xsd";
-			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", schemaLoc);
+			liste.getEintrag().add(dEintrag);
+			
+			schemaLoc = "";
+			marshal(UserDatabase.class, liste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/userDatabase.xml", schemaLoc);
 			
 			String result = "Dozent mit der id: "+dozent.getId()+" hinzugefügt";
 
@@ -84,24 +91,24 @@ import dozentenliste.Dozentenliste.DEintrag;
 		@Path("/{id}/delete")
 		public Response delete(@PathParam("id") BigInteger id) throws JAXBException, IOException {
 			
-			Dozentenliste dozentenliste = getAll();
+			UserDatabase liste = getAll();
 			
 			String result = null;
 			String result2 = null;
 			
-			for(int i = 0; i < dozentenliste.getDEintrag().size(); i++) {
-				if(dozentenliste.getDEintrag().get(i).getDozentId().equals(id) ) {
-					dozentenliste.getDEintrag().remove(i);
+			for(int i = 0; i < liste.getEintrag().size(); i++) {
+				if(liste.getEintrag().get(i).getId().equals(id) ) {
+					liste.getEintrag().remove(i);
 					result = "Eintrag in Liste entfernt";
 				} else {
 					result = "Eintrag in Liste nicht gefunden";
 				}
 			}
 			
-			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozentenliste.xsd";
-			marshal(Dozentenliste.class, dozentenliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozentenliste.xml", schemaLoc);
+			schemaLoc = "";
+			marshal(UserDatabase.class, liste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/userDatabase.xml", schemaLoc);
 			
-			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml");
+			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/user/"+id+".xml");
 
 			file.delete();
 			result2 = id+".xml entfernt";
@@ -109,23 +116,23 @@ import dozentenliste.Dozentenliste.DEintrag;
 			return Response.noContent().entity(result).entity(result2).build();
 		}
 		
-		@PUT
-		@Consumes(MediaType.APPLICATION_XML)
-		@Path("{id}/news")
-		public Response addNews(@PathParam("id") BigInteger id, Dozent newDozent) throws JAXBException, IOException {
-			Dozent dozent = getOne(id);
-			
-			newDozent.getNewsticker().getEintrag().get(0).setVerfasser(dozent.getTitel());
-			
-			dozent.getNewsticker().getEintrag().add(dozent.getNewsticker().getEintrag().size(), newDozent.getNewsticker().getEintrag().get(0));
-			
-			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd";
-			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml", schemaLoc);
-			
-			String result = "News gepostet!";
-			
-			return Response.status(201).entity(result).build();
-		}
+//		@PUT
+//		@Consumes(MediaType.APPLICATION_XML)
+//		@Path("{id}/news")
+//		public Response addNews(@PathParam("id") BigInteger id, Dozent newDozent) throws JAXBException, IOException {
+//			Dozent dozent = getOne(id);
+//			
+//			newDozent.getNewsticker().getEintrag().get(0).setVerfasser(dozent.getTitel());
+//			
+//			dozent.getNewsticker().getEintrag().add(dozent.getNewsticker().getEintrag().size(), newDozent.getNewsticker().getEintrag().get(0));
+//			
+//			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd";
+//			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+id+".xml", schemaLoc);
+//			
+//			String result = "News gepostet!";
+//			
+//			return Response.status(201).entity(result).build();
+//		}
 		
 		
 //		@PUT

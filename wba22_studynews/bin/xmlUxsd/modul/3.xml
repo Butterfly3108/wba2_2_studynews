@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<modul>
+		<zustand>online</zustand>
+		<bezeichnung>Grundlagen der visuellen Kommunikation</bezeichnung>
+		<status>Pflichtfach</status>
+		<credits>5 ECTS-P</credits>
+		<aufwand>4 SWS</aufwand>
+		<termin>jährlich angeboten</termin>				
+		<beschreibung>
+			<dozent id="4">Prof. Dipl. Des. Christian Noss</dozent>
+			<lerninhalte>Grundlagen der visuellen Wahrnehmung. Punkt, Linie, Fläche, Form. Figur-Grund.
+					    Farbe, Helligkeit, Struktur, Textur, Kontraste. Typographie, Satz. Layout, Gestaltungsraster.
+					    Prototypen, Designmodelle, Varianten.					
+						Die Aufgaben werden in der Vorlesung/Praktikum bearbeitet und personenindividuell betreut und korrigiert</lerninhalte>
+			<lernmethode>Vorlesung mit eingebetteten Übungselementen. Begleitendes Praktikum.</lernmethode>
+			<voraussetzungen>Sicherer Umgang mit OS X</voraussetzungen>
+		</beschreibung>
+	</modul>

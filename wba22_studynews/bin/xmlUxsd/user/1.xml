@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dozent id="1">
+		<nachname>Fischer</nachname>
+		<vorname>Kristian</vorname>
+		<adresse>
+			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
+			<raum>3241</raum>
+			<tel>0226181966297</tel>
+			<email>fischer at gm.fh-koeln.de</email>
+		</adresse>
+		<lehre>
+			<lehrgebiet>Informatik, Schwerpunkt Multimediasysteme und Anwendungsentwicklung</lehrgebiet>
+			<schwerpunkte>Multimediasysteme und Anwendungsentwicklung</schwerpunkte>
+			<url>http://www.gm.fh-koeln.de/~fischer/</url>
+			<sprechzeit>dienstags 11:15 - 12:00 Uhr</sprechzeit>
+			<veranstaltungen>
+				<list modulId="1">Web-basierte Anwendungen 2: Verteilte Systeme</list>
+			</veranstaltungen>
+		</lehre>
+</dozent>

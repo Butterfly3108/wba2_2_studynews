@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dozent id="4">
+ 	<nachname>Noss</nachname>
+	<vorname>Christian</vorname>
+ 	<adresse>
+    	<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
+    	<raum>3241</raum>
+    	<tel>0226181966412</tel>
+    	<email>christian.noss at gm.fh-koeln.de</email>
+ 	</adresse>
+ 	<lehre>
+    	<lehrgebiet>Kommunikationsdesign</lehrgebiet>
+    	<url>http://www.gm.fh-koeln.de/~noss</url>
+    	<veranstaltungen>
+    		<list modulId="3">Grundlagen der visuellen Kommunikation</list>
+    	</veranstaltungen>
+ 	</lehre>
+</dozent>

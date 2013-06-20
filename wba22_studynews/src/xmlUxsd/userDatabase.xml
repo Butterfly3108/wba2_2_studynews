@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<userDatabase xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="">
+    <eintrag id="1">
+        <nachname>Fischer</nachname>
+        <vorname>Kristian</vorname>
+        <status>dozent</status>
+    </eintrag>
+    <eintrag id="2">
+        <name>Konen</name>
+        <vorname>Wolfgang</vorname>
+        <status>dozent</status>
+    </eintrag>
+    <eintrag id="3">
+        <nachname>Stenzel</nachname>
+        <vorname>Horst</vorname>
+        <status>dozent</status>
+    </eintrag>
+    <eintrag id="4">
+        <nachname>Noss</nachname>
+        <vorname>Christian</vorname>
+        <status>dozent</status>
+    </eintrag>
+    <eintrag id="5">
+        <nachname>Kucharczyk</nachname>
+        <vorname>Daniela</vorname>
+        <status>student</status>
+    </eintrag>
+    <eintrag id="6">
+        <nachname>Will</nachname>
+        <vorname>Paul</vorname>
+        <status>student</status>
+    </eintrag>
+    <eintrag id="7">
+        <nachname>admin</nachname>
+        <vorname>admin</vorname>
+        <status>admin</status>
+    </eintrag>
+</userDatabase>

@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dozent id="2">
+		<nachname>Konen</nachname>
+		<vorname>Wolfgang</vorname>
+		<adresse>
+			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
+			<raum>3230</raum>
+			<tel>0226181966275</tel>
+			<email>konen at gm.fh-koeln.de</email>
+		</adresse>
+		<lehre>
+			<lehrgebiet>Mathematik, Angewandte Informatik</lehrgebiet>
+			<url>http://www.gm.fh-koeln.de/~konen/</url>
+			<sprechzeit>mittwochs 13:15 - 14:00 Uhr</sprechzeit>
+			<veranstaltungen>
+				<list modulId="4">Mathematik 2</list>
+			</veranstaltungen>
+		</lehre>
+</dozent>

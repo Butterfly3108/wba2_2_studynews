@@ -2,7 +2,22 @@
 <modulliste xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://example.org/modul ../xmlUxsd/modulliste.xsd">
 	<mEintrag modulId="1">
 		<zustand>online</zustand>
-		<kuerzel>WBA2</kuerzel>
 		<bezeichnung>Web-basierte Anwendungen 2: Verteilte Systeme</bezeichnung>
+	</mEintrag>
+	<mEintrag modulId="2">
+		<zustand>offline</zustand>
+		<bezeichnung>Einführung in die Medieninformatik</bezeichnung>
+	</mEintrag>
+	<mEintrag modulId="3">
+		<zustand>online</zustand>
+		<bezeichnung>Grundlagen der visuellen Kommunikation</bezeichnung>
+	</mEintrag>
+	<mEintrag modulId="4">
+		<zustand>online</zustand>
+		<bezeichnung>Mathematik 2</bezeichnung>
+	</mEintrag>
+	<mEintrag modulId="5">
+		<zustand>online</zustand>
+		<bezeichnung>Betriebssysteme und verteilte Systeme</bezeichnung>
 	</mEintrag>
 </modulliste>

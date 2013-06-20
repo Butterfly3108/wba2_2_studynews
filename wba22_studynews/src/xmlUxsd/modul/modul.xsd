@@ -5,20 +5,11 @@
 		<xs:complexType>
 			<xs:sequence>
 				<xs:element name="zustand" type="st_zustand" />
-				<xs:element name="bezeichnung">
-					<xs:complexType>
-						<xs:simpleContent>
-							<xs:extension base="xs:string">
-								<xs:attribute name="kuerzel" type="xs:string" />
-							</xs:extension>
-						</xs:simpleContent>
-					</xs:complexType>
-				</xs:element>
+				<xs:element name="bezeichnung" type="xs:string" />
 				<xs:element name="status" type="xs:string" />
 				<xs:element name="aufwand" type="xs:string" />
 				<xs:element name="termin" type="xs:string" />
 				<xs:element name="beschreibung" type="ct_beschreibung" />
-				<xs:element name="abonnenten" type="ct_abonnenten"/>
 			</xs:sequence>
 			<xs:attribute name="id" type="xs:nonNegativeInteger" />
 		</xs:complexType>
@@ -26,7 +17,7 @@
 
 	<xs:complexType name="ct_beschreibung">
 		<xs:sequence>
-			<xs:element name="dozent">
+			<xs:element name="dozent" maxOccurs="unbounded">
 				<xs:complexType>
 					<xs:simpleContent>
 						<xs:extension base="xs:string">
@@ -35,22 +26,9 @@
 					</xs:simpleContent>
 				</xs:complexType>
 			</xs:element>
-			<xs:element name="lerninhalte">
-				<xs:complexType>
-					<xs:sequence>
-						<xs:element name="punkt" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
-					</xs:sequence>
-				</xs:complexType>
-			</xs:element>
+			<xs:element name="lerninhalte" type="xs:string" />
 			<xs:element name="lernmethode" type="xs:string" />
 			<xs:element name="voraussetzungen" type="xs:string" />
-			<xs:element name="veranstaltungsort" type="xs:string" />
-		</xs:sequence>
-	</xs:complexType>
-	
-	<xs:complexType name="ct_abonnenten">
-		<xs:sequence>
-			<xs:element name="abonnent" type="xs:string" minOccurs="0" maxOccurs="unbounded" />
 		</xs:sequence>
 	</xs:complexType>
 	

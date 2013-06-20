@@ -4,7 +4,7 @@
 <xs:element name="studentenliste">
 		<xs:complexType>
 			<xs:sequence>
-				<xs:element name="dEintrag" minOccurs="0" maxOccurs="unbounded">
+				<xs:element name="sEintrag" minOccurs="0" maxOccurs="unbounded">
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="name" type="xs:string" />

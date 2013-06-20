@@ -1,26 +1,17 @@
 package client;
 
 import java.math.BigInteger;
-import java.util.Date;
-import java.util.GregorianCalendar;
 import java.util.Scanner;
 
-import javax.xml.datatype.DatatypeConfigurationException;
-import javax.xml.datatype.DatatypeFactory;
-import javax.xml.datatype.XMLGregorianCalendar;
+import jaxb.dozenten.CtAdresse;
+import jaxb.dozenten.CtLehre;
+import jaxb.dozenten.Dozent;
+import jaxb.dozenten.ObjectFactory;
+import jaxb.dozenten.CtLehre.Veranstaltungen;
 
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
-
-import dozenten.Dozent;
-import dozenten.CtAdresse;
-import dozenten.ObjectFactory;
-import dozenten.CtLehre;
-import dozenten.CtLehre.Veranstaltungen;
-import dozenten.CtNewsticker;
-import dozenten.CtNewsticker.Eintrag;
-import dozenten.CtAbonnenten;
 
 public class DozentTestClient {
 	
@@ -31,7 +22,6 @@ public class DozentTestClient {
 		System.out.println("2: Dozent löschen");
 		System.out.println("3: Alle Dozenten anzeigen");
 		System.out.println("4: Einen Dozenten anzeigen");
-		System.out.println("5: News posten");
 		auswahl = in.nextInt();
 		in.nextLine();
 		
@@ -47,7 +37,8 @@ public class DozentTestClient {
 				String vorname = in.nextLine();
 				System.out.println("Geben Sie Ihren Nachnamen ein:");
 				String nachname = in.nextLine();
-				dozent.setTitel(vorname+" "+nachname);
+				dozent.setNachname(nachname);
+				dozent.setVorname(vorname);
 				dozent.setAdresse(new CtAdresse());
 				dozent.getAdresse().setAnschrift("Steinmüllerallee 1, 51643 Gummersbach");
 				System.out.println("Geben Sie Ihre Raumnummer ein:");
@@ -63,8 +54,6 @@ public class DozentTestClient {
 				dozent.getLehre().setLehrgebiet(lehrgebiet);
 				dozent.getLehre().setUrl("http://www.gm.fh-koeln.de/~"+nachname);
 				dozent.getLehre().setVeranstaltungen(new Veranstaltungen());
-				dozent.setNewsticker(new CtNewsticker());
-				dozent.setAbonnenten(new CtAbonnenten());
 				
 				
 				ClientResponse response = webResource.accept("application/xml").post(ClientResponse.class, dozent);
@@ -154,61 +143,7 @@ public class DozentTestClient {
 				e.printStackTrace();
 		 
 			  }
-		} else if(auswahl == 5) {
-		
-			try {
-				
-				System.out.println("Dozent-Id eingeben:");
-				String dozentId = in.nextLine();
-
-				System.out.println("Modul eingeben:");
-				String modul = in.nextLine();
-
-				System.out.println("News:");
-				String newsText = in.nextLine();
-				
-				Client client = Client.create();
-				WebResource webResource = client.resource("http://localhost:4434/dozent/"+dozentId+"/news");
-				
-				Dozent dozent = new Dozent();
-				Eintrag news = new Eintrag();
-				
-				GregorianCalendar gCalendar = new GregorianCalendar();
-				Date currentDate = new Date();
-				gCalendar.setTime(currentDate);
-				XMLGregorianCalendar xmlCalendar = null;
-				try {
-					xmlCalendar = DatatypeFactory.newInstance().newXMLGregorianCalendar(gCalendar);
-					} catch (DatatypeConfigurationException ex) {
-				}
-		        
-		        news.setDatum(xmlCalendar);
-				news.setModul(modul);
-				news.setValue(newsText);
-				dozent.setNewsticker(new CtNewsticker());
-				dozent.getNewsticker().getEintrag().add(news);
-				
-				ClientResponse response = webResource.accept("MediaType.APPLICATION_XML").put(ClientResponse.class, dozent);
-	
-				if (response.getStatus() != 201) {
-					throw new RuntimeException("Failed : HTTP error code : "+ response.getStatus());
-				}
-				
-				System.out.println("Output from Server .... \n");
-				String output = response.getEntity(String.class);
-				System.out.println(output);
-				
-			} catch (Exception e) {
-				
-				e.printStackTrace();
-				
-			} finally {
-				
-				in.close();
-				
-			}
-
-		}
+		} 
 
 
 		

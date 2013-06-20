@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<modul id="2">
+		<zustand>offline</zustand>
+		<bezeichnung>Einführung in die Medieninformatik</bezeichnung>
+		<status>Pflichtfach</status>
+		<credits>5 ECTS-P</credits>
+		<aufwand>4 SWS</aufwand>
+		<termin>jährlich angeboten</termin>				
+		<beschreibung>
+			<dozent id="1">Prof. Dr. Kristian Fischer</dozent>
+			<dozent id="4">Prof. Dipl. Des. Christian Noss</dozent>
+			<lerninhalte>Begriffsbestimmung für Informatik, Medien, Medieninformatik. Darstellung von Themen- und 
+				Anwendungsgebieten des Lehr- und Forschungsbereichs der Medieninformatik. Darstellung verschiedener 
+				Medientheorien. Historischer Abriss der Medientechnik im Kontext gesellschaftlich-ökonomischer Perspektiven.
+
+				Grundlagen audiovisueller Medientechnologien. Gestaltungsdimensionen medienbasierter Systeme und „gängige" 
+				Ausprägungen. Grundsätze der Modellbildung und deren Anwendungsbezug zu Softwaresystemen, computergestützten 
+				menschlichen Handeln in relevanten Kontexten (ökonomisch, sozial etc.). Repräsentation von „realen und 
+				virtuellen Welten" in interaktiven Systemen.</lerninhalte>
+			<lernmethode>Arbeiten in Gruppen</lernmethode>
+			<voraussetzungen>keine</voraussetzungen>
+		</beschreibung>
+	</modul>

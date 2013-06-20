@@ -8,7 +8,6 @@
 					<xs:complexType>
 						<xs:sequence>
 							<xs:element name="zustand" type="st_zustand" />
-							<xs:element name="kuerzel" type="xs:string" />
 							<xs:element name="bezeichnung" type="xs:string" />
 						</xs:sequence>
 						<xs:attribute name="modulId" type="xs:integer" />	

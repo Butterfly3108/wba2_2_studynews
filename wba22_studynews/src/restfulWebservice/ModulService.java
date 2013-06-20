@@ -9,13 +9,14 @@ import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import javax.xml.bind.JAXBException;
 
-import dozenten.Dozent;
-import dozenten.CtLehre.Veranstaltungen.List;
-import module.Modul;
-import modulliste.Modulliste;
-import modulliste.StZustand;
-import modulliste.Modulliste.MEintrag;
+import xmpp.ConnectionHandler;
 import jaxb.Ressource;
+import jaxb.dozenten.Dozent;
+import jaxb.dozenten.CtLehre.Veranstaltungen.List;
+import jaxb.module.Modul;
+import jaxb.modulliste.Modulliste;
+import jaxb.modulliste.StZustand;
+import jaxb.modulliste.Modulliste.MEintrag;
 
 
 @Path ("/modul")
@@ -58,11 +59,13 @@ public class ModulService extends Ressource {
 		schemaLoc = "http://example.org/modul ../xmlUxsd/modul/modul.xsd ";
 		marshal(Modul.class, modul, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/modul/"+modulId+".xml", schemaLoc);
 		
+		ConnectionHandler ch = new ConnectionHandler();
+		ch.createNewNode(modul.getBezeichnung());
+		
 		MEintrag mEintrag = new MEintrag();
 		mEintrag.setModulId(BigInteger.valueOf(modulId));
 		mEintrag.setZustand(StZustand.valueOf(modul.getZustand().toString()));
-		mEintrag.setKuerzel(modul.getBezeichnung().getKuerzel());
-		mEintrag.setBezeichnung(modul.getBezeichnung().getValue());
+		mEintrag.setBezeichnung(modul.getBezeichnung());
 		
 		modulliste.getMEintrag().add(mEintrag);
 		
@@ -111,29 +114,33 @@ public class ModulService extends Ressource {
 	public Response setStatus(@PathParam("id") BigInteger id, @QueryParam("status")String zustand) throws JAXBException, IOException {
 		Modul modul = getOne(id);
 
-		BigInteger dozentId = modul.getBeschreibung().getDozent().getDozentId();
-		Dozent dozent = new Dozent();
-		dozent = (Dozent) unmarshal(Dozent.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml");
+		for(int i=0; i<modul.getBeschreibung().getDozent().size(); i++) {
+			BigInteger dozentId = modul.getBeschreibung().getDozent().get(i).getDozentId();
+			Dozent dozent = new Dozent();
+			dozent = (Dozent) unmarshal(Dozent.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml");
 		
-		if(zustand.equals("online")) {
-			List newModul = new List();
-			newModul.setKuerzel(modul.getBezeichnung().getKuerzel());
-			newModul.setValue(modul.getBezeichnung().getValue());
-			dozent.getLehre().getVeranstaltungen().getList().add(newModul);
-		}
 		
-		if(zustand.equals("offline")) {
-			for(int i=0 ; i<dozent.getLehre().getVeranstaltungen().getList().size() ; i++ ) {
-				if(modul.getId().equals(dozent.getLehre().getVeranstaltungen().getList().get(i).getModulId())) {
-					dozent.getLehre().getVeranstaltungen().getList().remove(i);
+			if(zustand.equals("online")) {
+				List newModul = new List();
+				newModul.setModulId(modul.getId());
+				newModul.setValue(modul.getBezeichnung());
+				dozent.getLehre().getVeranstaltungen().getList().add(newModul);
+			}
+			
+			if(zustand.equals("offline")) {
+				for(int j=0 ; j<dozent.getLehre().getVeranstaltungen().getList().size() ; j++ ) {
+					if(modul.getId().equals(dozent.getLehre().getVeranstaltungen().getList().get(j).getModulId())) {
+						dozent.getLehre().getVeranstaltungen().getList().remove(j);
+					}
 				}
 			}
+		
+		
+			schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd ";
+			marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", schemaLoc);
 		}
 		
-		schemaLoc = "http://example.org/dozent ../xmlUxsd/dozent/dozent.xsd ";
-		marshal(Dozent.class, dozent, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/dozent/"+dozentId+".xml", schemaLoc);
-		
-		modul.setZustand(module.StZustand.fromValue(zustand));
+		modul.setZustand(jaxb.module.StZustand.fromValue(zustand));
 		
 		schemaLoc = "http://example.org/modul ../../schema/modul.xsd";
 		marshal(Modul.class, modul, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/modul/"+id+".xml", schemaLoc);

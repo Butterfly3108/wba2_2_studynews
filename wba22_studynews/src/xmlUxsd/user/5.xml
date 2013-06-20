@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<student id="5">
+			<nachname>Kucharczyk</nachname>
+			<vorname>Daniela</vorname>
+			<kennung>mi1059</kennung>
+			<studiengang>Medieninformatik</studiengang>
+			<semester>6</semester>
+			<email>daniela.kucharczyk at gmx.de</email>
+		</student>

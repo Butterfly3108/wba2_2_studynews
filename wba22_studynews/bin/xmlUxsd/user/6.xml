@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+		<student id="6">
+			<nachname>Will</nachname>
+			<vorname>Paul</vorname>
+			<kennung>mi1111</kennung>
+			<studiengang>Medieninformatik</studiengang>
+			<semester>6</semester>
+			<email>pontchster at gmail.com</email>
+		</student>

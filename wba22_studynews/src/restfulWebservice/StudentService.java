@@ -18,10 +18,14 @@ import javax.xml.bind.JAXBException;
 //import javax.ws.rs.core.MediaType;
 
 
+
+
+
+
 import jaxb.Ressource;
-import studenten.Student;
-import studentenliste.Studentenliste;
-import studentenliste.Studentenliste.DEintrag;
+import jaxb.studenten.Student;
+import jaxb.userDatabase.UserDatabase;
+import jaxb.userDatabase.Eintrag;
 
 	@Path ("/student")
 	public class StudentService extends Ressource {
@@ -29,12 +33,12 @@ import studentenliste.Studentenliste.DEintrag;
 		
 		@GET
 		@Produces(MediaType.APPLICATION_XML)
-		public Studentenliste getAll() throws JAXBException, IOException
+		public UserDatabase getAll() throws JAXBException, IOException
 		{
-			Studentenliste studentenliste = new Studentenliste();
-			studentenliste = (Studentenliste) unmarshal(Studentenliste.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentenliste.xml");
+			UserDatabase liste = new UserDatabase();
+			liste = (UserDatabase) unmarshal(UserDatabase.class, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/userDatabase.xml");
 				
-				return studentenliste;
+				return liste;
 		}
 	
 		
@@ -55,20 +59,21 @@ import studentenliste.Studentenliste.DEintrag;
 		@Consumes(MediaType.APPLICATION_XML)
 		@Path("/add")
 		public Response post(Student student) throws JAXBException, IOException {
-			Studentenliste studentliste = getAll();
-			int studentId = studentliste.getDEintrag().get(studentliste.getDEintrag().size()-1).getStudentId().intValue()+1;
+			UserDatabase liste = getAll();
+			int studentId = liste.getEintrag().get(liste.getEintrag().size()-1).getId().intValue()+1;
 			
 			student.setId(BigInteger.valueOf(studentId));	
 			
 			marshal(Student.class, student, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/student/"+studentId+".xml", "http://example.org/student student.xsd ");
 			
-			DEintrag dEintrag = new DEintrag();
-			dEintrag.setStudentId(BigInteger.valueOf(studentId));
-			dEintrag.setName(student.getName());
+			Eintrag dEintrag = new Eintrag();
+			dEintrag.setId(BigInteger.valueOf(studentId));
+			dEintrag.setNachname(student.getNachname());
+			dEintrag.setVorname(student.getVorname());
 			
-			studentliste.getDEintrag().add(dEintrag);
+			liste.getEintrag().add(dEintrag);
 			
-			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentenliste.xml", "http://example.org/student ../xmlUxsd/studentenliste.xsd");
+			marshal(UserDatabase.class, liste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/userDatabase.xml", "");
 			
 			String result = "Student mit der id: "+student.getId()+" hinzugefügt";
 
@@ -81,23 +86,23 @@ import studentenliste.Studentenliste.DEintrag;
 		@Path("/{id}/delete")
 		public Response delete(@PathParam("id") BigInteger id) throws JAXBException, IOException {
 			
-			Studentenliste studentliste = getAll();
+			UserDatabase liste = getAll();
 			
 			String result = null;
 			String result2 = null;
 			
-			for(int i = 0; i < studentliste.getDEintrag().size(); i++) {
-				if(studentliste.getDEintrag().get(i).getStudentId().equals(id) ) {
-					studentliste.getDEintrag().remove(i);
+			for(int i = 0; i < liste.getEintrag().size(); i++) {
+				if(liste.getEintrag().get(i).getId().equals(id) ) {
+					liste.getEintrag().remove(i);
 					result = "Eintrag in Liste entfernt";
 				} else {
 					result = "Eintrag in Liste nicht gefunden";
 				}
 			}
 			
-			marshal(Studentenliste.class, studentliste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/studentenliste.xml", "http://example.org/student ../xmlUxsd/studentenliste.xsd");
+			marshal(UserDatabase.class, liste, "/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/userDatabase.xml", "");
 			
-			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/student/"+id+".xml");
+			File file = new File("/Users/Butterfly/git/wba22_studynews/wba22_studynews/src/xmlUxsd/user/"+id+".xml");
 
 			file.delete();
 			result2 = id+".xml entfernt";

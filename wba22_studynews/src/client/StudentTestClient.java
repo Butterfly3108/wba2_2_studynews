@@ -3,16 +3,14 @@ package client;
 import java.math.BigInteger;
 import java.util.Scanner;
 
+import jaxb.studenten.ObjectFactory;
+import jaxb.studenten.Student;
+
 import com.sun.jersey.api.client.Client;
 import com.sun.jersey.api.client.ClientResponse;
 import com.sun.jersey.api.client.WebResource;
 
 
-import studenten.Student;
-import studenten.CtAbos;
-import studenten.CtDozent;
-import studenten.CtModul;
-import studenten.ObjectFactory;
 
 public class StudentTestClient {
 	
@@ -33,14 +31,12 @@ public class StudentTestClient {
 				WebResource webResource = client.resource("http://localhost:4434/student/add/");
 				Student student = new ObjectFactory().createStudent();
 				
-				student.setName("Max Mustermann");
+				student.setNachname("Mustermann");
+				student.setVorname("Max");
 				student.setKennung("mi1212");
 				student.setStudiengang("Medieninformatik");
 				student.setSemester(BigInteger.valueOf(6));
 				student.setEmail("max.mustermann at gmx.de");
-				student.setAbos(new CtAbos());
-				student.getAbos().setModule(new CtModul());
-				student.getAbos().setDozent(new CtDozent());
 				
 				
 				

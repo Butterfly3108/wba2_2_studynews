@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<notification xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="simplePayload.xsd">
+  <datum>2001-01-01</datum>
+  <verfasser>verfasser</verfasser>
+  <topic>topic</topic>
+  <nachricht>nachricht</nachricht>
+</notification>

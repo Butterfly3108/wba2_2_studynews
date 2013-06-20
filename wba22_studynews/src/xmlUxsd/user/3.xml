@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dozent id="3">
+		<nachname>Stenzel</nachname>
+		<vorname>Horst</vorname>
+		<adresse>
+			<anschrift>Steinmüllerallee 1, 51643 Gummersbach</anschrift>
+			<raum>3207</raum>
+			<tel>0226181966403</tel>
+			<email>stenzel at gm.fh-koeln.de</email>
+		</adresse>
+		<lehre>
+			<lehrgebiet>Angewandte Mathematik und Informatik</lehrgebiet>
+			<schwerpunkte>Algortihmen für Computer-Graphik und Betriebssysteme</schwerpunkte>
+			<url>http://www.gm.fh-koeln.de/hstl</url>
+			<sprechzeit>dienstags 14:00 - 14:45 Uhr</sprechzeit>
+			<veranstaltungen>
+				<list modulId="5">Betriebssysteme und verteilte Systeme</list>
+			</veranstaltungen>
+		</lehre>
+</dozent>

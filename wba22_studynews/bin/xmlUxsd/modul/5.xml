@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+	<modul id="5">
+		<zustand>online</zustand>
+		<bezeichnung>Betriebssysteme und verteilte Systeme</bezeichnung>
+		<status>Pflichtfach</status>
+		<credits>5 ECTS-P</credits>
+		<aufwand>4 SWS</aufwand>
+		<termin>jährlich angeboten</termin>				
+		<beschreibung>
+			<dozent id="3">Prof. Dr. Horst Stenzel</dozent>
+			<lerninhalte>Systemprogrammierung am Beispiel von UNIX: Shell-Programmierung, Prozess-Modelle, Prozess-Erzeugung 
+						und Synchronisation, UNIX-Prozesse und elementare Synchronisation, Pipes, Shared Memory, 
+						Synchronisationsprimitive für den wechselseitigen Ausschluss, Semaphore, Nachrichtenwarteschlangen, Dateisysteme, 
+						TCP/IP, Sockets, Remote Procedure Call, Strategien zum Scheduling und zur Speicherverwaltung, klassische 
+						Synchronisationsprobleme </lerninhalte>
+			<lernmethode>Vorlesung, Übung, Praktikum </lernmethode>
+			<voraussetzungen>Kenntnisse und Umnang mit formalen Systemen, sicherer Umgang mit C, Grundkenntnisse in UNIX </voraussetzungen>
+		</beschreibung>
+	</modul>

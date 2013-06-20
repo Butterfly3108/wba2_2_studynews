@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 	<modul id="1">
 		<zustand>online</zustand>
-		<bezeichnung kuerzel="WBA2">Web-basierte Anwendungen 2: Verteilte Systeme</bezeichnung>
+		<bezeichnung>Web-basierte Anwendungen 2: Verteilte Systeme</bezeichnung>
 		<status>Pflichtfach</status>
 		<credits>5 ECTS-P</credits>
 		<aufwand>4 SWS</aufwand>
@@ -9,22 +9,16 @@
 		
 		<beschreibung>
 			<dozent dozentId="1">Prof. Dr. Kristian Fischer</dozent>
-			<lerninhalte>
-					<punkt>Modellierung von Daten für die Kommunikation im Web: Datenkommunikation in offenen Umgebungen; Prinzip von 
-					Auszeichnungssprachen; Datenmodellierung mit XML und XML Schemasprachen; Datenmodellierung mit RDF und RDFS </punkt>
-					<punkt>Infrastruktur und Standards: klassische Middlewaresysteme: RPC,CORBA, nachrichtenorientierte Middleware; Standards 
-					und Standardisierung im Internet; quelloffene vs. proprietäre Software</punkt>
-					<punkt>Dienstorientierte Architektur: Basisstandards: SOAP, WSDL, UDDI; Dienstkomposition; Transaktionen; Entwurfsprinzipen: 
-					top-down vs. bottom-up, Kohäsion, Granularität</punkt>
-					<punkt>Kommunikationsarchitekturen: Streaming Protokolle: RTP, RSVP, RTCP; Dienstgüte; Signalisierungsprotokolle: SIP, H.323; 
-					Präsenzarchitekturen</punkt>
-			</lerninhalte>
+			<lerninhalte>Modellierung von Daten für die Kommunikation im Web: Datenkommunikation in offenen Umgebungen; Prinzip 
+						von Auszeichnungssprachen; Datenmodellierung mit XML und XML Schemasprachen; Datenmodellierung mit RDF und RDFS.
+						Infrastruktur und Standards: klassische Middlewaresysteme: RPC,CORBA, nachrichtenorientierte Middleware; 
+						Standards und Standardisierung im Internet; quelloffene vs. proprietäre Software
+						Dienstorientierte Architektur: Basisstandards: SOAP, WSDL, UDDI; Dienstkomposition; Transaktionen; 
+						Entwurfsprinzipen: top-down vs. bottom-up, Kohäsion, Granularität.
+						Kommunikationsarchitekturen: Streaming Protokolle: RTP, RSVP, RTCP; Dienstgüte; Signalisierungsprotokolle: 
+						SIP, H.323; Präsenzarchitekturen</lerninhalte>
 			<lernmethode>Vorlesung, Übung</lernmethode>
 			<voraussetzungen>Datenbanken, Softwaretechnik I, Grundlagen von Multimedia Systemen, Grundkenntnisse der 
 				objektorientierten Programmierung, Grundkenntnisse der Kommunikationstechnik, Netzbasierte Anwendungen</voraussetzungen>
-			<veranstaltungsort>Raum 3101</veranstaltungsort>
 		</beschreibung>
-		<abonnenten>
-			<abonnent>Daniela Kucharczyk</abonnent>
-		</abonnenten>
 	</modul>
